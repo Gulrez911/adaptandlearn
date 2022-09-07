@@ -1,0 +1,32 @@
+<workbook>
+	<worksheet name="IT">
+		<section startRow="0" endRow="0" />
+		<loop startRow="1" endRow="1" items="result" var="ass"
+			varType="com.assessment.web.dto.AssessmentExcelDto">
+			<section startRow="1" endRow="1">
+				<mapping row="1" col="0">ass.jobDesriptionName</mapping>
+				<mapping row="1" col="1">ass.jobdesc</mapping>
+				
+				<mapping row="1" col="2">ass.qualifier1</mapping>
+				<mapping row="1" col="3">ass.qualifier2</mapping>
+			
+				
+				<mapping row="1" col="4">ass.qualifier3</mapping>
+				<mapping row="1" col="5">ass.qualifier4</mapping>
+				<mapping row="1" col="6">ass.qualifier5</mapping>
+				
+				<mapping row="1" col="7">ass.qualifier1CourseVideoUrl</mapping>
+				<mapping row="1" col="8">ass.qualifier2CourseVideoUrl</mapping>
+				<mapping row="1" col="9">ass.qualifier3CourseVideoUrl</mapping>
+				<mapping row="1" col="10">ass.qualifier4CourseVideoUrl</mapping>
+				<mapping row="1" col="11">ass.qualifier5CourseVideoUrl</mapping>
+
+			</section>
+			<loopbreakcondition>
+				<rowcheck offset="0">
+					<cellcheck offset="0">End Rows:</cellcheck>
+				</rowcheck>
+			</loopbreakcondition>
+		</loop>
+	</worksheet>
+</workbook>

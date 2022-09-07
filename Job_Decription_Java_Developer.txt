@@ -1,0 +1,45 @@
+1.	Job Description  Description
+- Experience as a developer
+- Experience in delivering of complex Java based solutions
+- Fintech product development experience is preferred
+- Experience in Microservices Architecture is a must
+- Excellent verbal and written communication skills
+- Ability to collaborate and work effectively in a team.
+- Understanding and working experience with GIT and Artefactory
+- Understanding of the CI/CD pipelines
+
+
+
+
+2.	Primary Skills (Comma Separated)
+
+Java,Spring Boot, Microservices, Rest, CSS, Html5, Javascript, J2Ee, JPA, Angular
+
+
+3.	Secondary Skills (Comma Separated)
+
+English, Aptitude, Python
+
+
+4.	Education Expectations (Comma Separated)
+
+BE, BTech, MCA, MS
+
+
+5.	Certification Expectations (Comma Separated)
+
+Oracle Certified Java Developer
+
+6.	Domain Knowledge (Comma Separated)
+
+Banking, Insurance
+
+
+7.	Experience - No of Years (Range Example: 8 to 10 years)
+
+8 to 10
+
+
+8.	Location
+
+Mumbai

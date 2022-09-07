@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<workbook>
+	<worksheet name="Qualifier">
+		<section startRow="0" endRow="0" />
+		<loop startRow="1" endRow="1" items="result" var="ass"
+			varType="com.assessment.web.dto.Qualifier">
+			<section startRow="1" endRow="1">
+				<mapping row="1" col="0">ass.qualifier1</mapping>
+				<mapping row="1" col="1">ass.displayq1</mapping>
+				<mapping row="1" col="2">ass.parentGroupClassifier</mapping>
+			</section>
+			<loopbreakcondition>
+				<rowcheck offset="0">
+					<cellcheck offset="0">End Rows:</cellcheck>
+				</rowcheck>
+			</loopbreakcondition>
+		</loop>
+	</worksheet>
+</workbook>

@@ -1,0 +1,407 @@
+@media (max-width: 1366.98px) {
+    section{
+        .recent_test{
+            .recent_test_body{
+                .recent_test_card{
+                    ul {
+                        padding: 0px;
+                        margin: 0px;
+                        list-style-type: none;
+                        li{
+                            display: inline-block;
+                             margin-right: 7px;
+                            font-weight: 400;
+                            font-size: 13px;
+                            color: #3E3E3E;
+                        }
+                    }
+                }
+            }
+        }
+    }    
+       
+}
+
+
+
+
+
+@media (max-width: 991.9px) {
+    section .question_bank .question_bank_tab.Test_Analytics_sec .Test_Statistic_box .condidate_test p {
+        margin: 0px;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 30px;
+        color: #ffffff;
+    }
+    .start_assignment_section {
+        .assessment_tab {
+            div#v-pills-tabContent {
+                width: 80%;
+            }
+            div#v-pills-tab {
+                width: 25%;
+            }
+        }
+    }
+
+    .quiz_section .image-wrapper {
+        display: block;
+        .time-zone {
+            margin-bottom: 22px;
+        }
+    }
+    section{
+        .question_bank{
+            .question_bank_tab{
+            ul{
+            li {
+                margin: 0px 0px 0px;
+                button.nav-link {
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+    }
+        .dashboard_heading {
+            .question_heading {
+                margin-bottom: 15px;
+            }
+        }
+    }
+
+}
+
+
+@media (max-width: 767.9px) {
+    section .question_bank .question_bank_tab.Test_Analytics_sec .Test_Statistic_box .condidate_test p {
+        margin: 0px;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 30px;
+        color: #ffffff;
+    }
+    .start_assignment_section{
+        .assessment_tab {
+            .d-flex.align-items-start {
+                display: block !important;
+                div#v-pills-tab {
+                    width: 100%;
+                    margin-bottom: 20px;
+                }
+                div#v-pills-tabContent {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    section{
+        .question_bank{
+            .question_bank_tab{
+                div.tab-content{
+                    .Problems_tab{
+                        .general{
+                            .general_form{
+                                .general_field{
+                                    textarea {
+                                        height: auto;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .Problems_tab.Candidates{
+                        .condidate_table{
+                            .pagination_box{
+                                .page {
+                                    height: 15px;
+                                    width: 15px;
+                                }
+                            }
+                        }
+                        .question_bank{
+                            display: block;
+                            .search {
+                                margin-bottom: 15px;
+                                .wrap {
+                                    width: 100%;
+                                    margin: 0px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .question_bank_tab {
+            .nav {
+                display: block;
+            }
+        }
+        .dashboard_heading {
+          
+            .question_heading {
+                margin-bottom: 15px;
+            }
+        }
+        .recent_test{
+            .recent_test_body{
+                .filter_checkbox{
+                    p{
+                        padding-inline-start: 0px;
+                    }
+                    ul {
+                        padding-inline-start: 0px;
+                    }
+                }
+                .condidate_box{
+                    .time {
+                        width: 115px;
+                        text-align: right;
+                        p{
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 555.9px) {
+    .quiz_section .fully-wrapper .selector-instruction h3 {
+        font-size: 18px;
+    }
+    .quiz_section .instructions h5 {
+        font-size: 18px;
+    }
+    section{
+        .question_bank{
+            .dashboard_heading{
+                h3{
+                    button.open.close {
+                       
+                        margin-left: 0;
+                    }
+                }
+            }
+
+            .question_bank_tab{
+                div.tab-content{
+                    .Problems_tab{
+                        .general{
+                            .general_form {
+                                .general_field{
+                                    input {
+                                      font-size: 14px;
+                                    }
+                                    label {
+                                        font-weight: 400;
+                                        font-size: 13px;
+                                        line-height: 15px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    section{
+     .recent_test{
+        .recent_test_body.ques_bank{
+            .recent_test_card{
+                .ques_bank_box{
+                    .question_right{
+                        width: 30%;
+                        text-align: right;
+                        ul{
+                            li{
+                                margin:0px 2px;
+                                a{
+                                    img{
+                                        width: 20px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+       .recent_test_body.Activity_Feed{
+         .feed_box {
+            .time {
+            p{
+              width: 75px;
+              font-size: 12px;
+              line-height: 16px;
+            }
+        }
+        .condidate_box{
+            .condidate_name {
+                p{
+                    line-height: 22px;
+                    font-size: 13px;
+                }
+            }
+            .condidate_icon{
+                p{
+                    width: 55px;
+                    height: 55px;
+                 
+                }
+            }
+        }
+    }
+    }
+    .recent_test_body{
+        .recent_test_card{
+            .top{
+                h3 {
+                    font-weight: 500;
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+  }   
+        .dashboard_heading{
+            h3 {
+                margin: 0px;
+                font-weight: 500;
+                font-size: 22px;
+                color: $black;
+            }
+            .create_test{
+                button.test {
+                    font-size: 13px;
+                    padding: 6px 25px;
+                }
+            }
+        }
+    } 
+
+}
+
+
+@media (max-width: 400.9px) {
+    .quiz_section{
+        .whole-wrapper{
+            .practise-test{
+                h3 {
+                    font-size: 18px;
+                    font-weight: 500;
+                    margin: 0px;
+                }
+            }
+            .logo{
+                margin-right: 20px;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    background: white;
+    border-radius: 50%;
+                img {
+                    width: 50px;
+                }
+            }  
+        } 
+    }
+
+    section{
+        .dashboard_heading{
+            .create_test{
+                button.test.mr-2 {
+                  
+                    margin-bottom: 15px;
+                }
+            }
+        }
+    }
+
+
+    section{
+        .search{
+            .wrap {
+                width: 90%;
+                margin: 0px auto 30px;
+            }
+        }
+        .dashboard_heading {
+            display: block;
+            h3 {
+                margin-bottom: 18px;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 375.9px) {
+
+    .start_assignment_section {
+        .recent_test_heading.text-center.footer {
+            .create_test button.test.preview {
+                margin-bottom: 15px;
+            }
+        }
+    }
+
+    section{
+        .recent_test{
+            .recent_test_body.Activity_Feed{
+                .feed_box{
+                  .time{
+                    p {
+                        margin-left: 5px;
+                    }
+                  }
+                }
+            }
+            .recent_test_body{
+                .condidate_box{
+                    .condidate_name {
+                        h4{
+                            font-size: 15px;
+                        }
+                        p{
+                            font-size: 13px;
+                        }
+                    }
+                    .condidate_icon{
+                        p{
+                            width: 55px;
+                            height: 55px;
+                        }
+                    }
+                }
+                .recent_test_card{
+                    .top{
+                        display: block;
+                        h3 {
+                          margin-bottom: 15px;
+                          margin-right: 0px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+@media (max-width: 320.9px) {
+section .search .wrap {
+    width: 100%;
+    margin: 0px auto 30px;
+}
+}
+
+
+

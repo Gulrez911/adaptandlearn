@@ -1,0 +1,72 @@
+@charset "ISO-8859-1";
+#breadcrumb ul {
+  font-family:'Montserrat', 'Source Sans Pro', sans-serif;
+  list-style: none;
+  display: inline-table;
+  padding-inline-start: 1px;
+  font-size: 12px;
+  margin-block-start: 6px;
+  margin-block-end: 6px;	
+}
+#breadcrumb li {
+  display: inline;
+}
+#breadcrumb a {
+  float: left;
+  background: #E7E9EB;
+  padding: 3px 10px 3px 20px;
+  position: relative;
+  margin: 0 5px 0 0; 
+  text-decoration: none;
+  color: #555;
+}
+#breadcrumb a:after {
+  content: "";  
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 12px solid #E7E9EB;
+  position: absolute; 
+  right: -12px;
+  top: 0;
+  z-index: 1;
+}
+#breadcrumb a:before {
+  content: "";  
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 12px solid #fff;
+  position: absolute; 
+  left: 0; 
+  top: 0;
+}
+#breadcrumb ul li:first-child a:before {
+  display: none; 
+}
+#breadcrumb ul:last-child li{
+  padding-right: 5px;
+}
+#breadcrumb ul li a:hover {
+  background: #00008B;
+  color:#fff;
+}
+#breadcrumb ul li a:hover:after {
+  border-left-color: #00008B;
+  color:#fff;
+}
+ 
+.darktheme #breadcrumb li {
+  color:#fff;
+}
+.darktheme #breadcrumb a {
+  background:#616161;
+  color: #ddd;
+}	
+.darktheme #breadcrumb a:after {
+  border-left: 12px solid #616161;
+}
+.darktheme #breadcrumb a:before {
+  border-left: 12px solid rgb(40, 44, 52);
+}
+.darktheme .currentcrumb {
+  color:#ddd;
+}

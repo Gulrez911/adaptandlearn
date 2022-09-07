@@ -1,0 +1,229 @@
+.quiz_section {
+    border-radius: 5px;
+    border: 1px solid #E8E8E8;
+    background: #F8F8F8;
+    .fully-wrapper {
+        padding: 0px 15px;
+        .information {
+            p{
+                margin: 0px;
+                padding-bottom: 20px;
+                text-align: center;
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
+        .button-type {
+            text-align: center;
+            margin: 20px 0px 10px;
+            button {
+                background: #4782BC;
+                border: none;
+                color: #ffffff;
+                padding: 7px 25px;
+                font-size: 15px;
+                border-radius: 50px;
+                i {
+                    margin-left: 10px;
+                    font-size: 13px;
+                }
+            }
+        }
+        .accord {
+            .accordion-body {
+                font-size: 14px;
+                line-height: 24px;
+            }
+            .accordion-item {
+                margin-bottom: 10px;
+                border: 0px solid rgba(0,0,0,.125);
+                button.accordion-button {
+                    padding: 15px 15px;
+                    color: black;
+                    font-weight: 500;
+                    &:focus {
+                        z-index: 0;
+                        border-color: #86b7fe;
+                        outline: 0;
+                        box-shadow: 0 0 0 0rem rgb(13 110 253 / 25%);
+                    }
+                    p{
+                        margin: 0px;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+        .selector-instruction {
+            h3 {
+                font-size: 24px;
+                font-weight: 500;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+            }
+        }
+    }
+    .instructions {
+        padding: 0px 15px;
+        h5 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        ol {
+            li {
+                font-size: 14px;
+                margin-bottom: 10px;
+                line-height: 24px;
+            }
+        }
+    }
+    .image-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0px 15px 25px;
+        border-radius: 5px;
+        padding: 15px;
+        background: #ffffff;
+        .time-zone {
+            display: flex;
+            align-items: center;
+            .logo-item {
+                margin-right: 10px;
+                i {
+                    font-size: 35px;
+                    color: #4782bc;
+                }
+            }
+            .timer {
+                h2 {
+                    font-size: 24px;
+                    font-weight: 500;
+                    margin: 0px;
+                }
+                p {
+                    margin: 0px;
+                    font-size: 15px;
+                }
+            }
+            .time-duration {
+                h2 {
+                    font-size: 24px;
+                    font-weight: 500;
+                    margin: 0px;
+                }
+                p {
+                    margin: 0px;
+                    font-size: 15px;
+                }
+            }
+            .problems {
+                h2 {
+                    font-size: 24px;
+                    margin: 0px;
+                    font-weight: 500;
+                }
+                p {
+                    margin: 0px;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+    .whole-wrapper {
+        display: flex;
+        align-items: center;
+        padding: 22px 15px;
+        .logo {
+            margin-right: 20px;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            background: white;
+            border-radius: 50%;
+            img {
+                width: 70px;
+            }
+        }
+        .practise-test {
+            h3{
+                font-size: 24px;
+                font-weight: 500;
+                margin: 0px;
+            }
+            p {
+                margin: 0px;
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+
+
+.start_assignment_section {
+    .Quiz_start_sec {
+        .recent_test_body{
+            .recent_test_heading.footer {
+                background: white;
+                .create_test {
+                    button.test {
+                        background: #4782BC;
+    border: none;
+    color: #ffffff;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 7px 25px;
+                    }
+                }
+            }
+        }
+    }
+    .recent_test_heading.text-center.footer {
+        justify-content: center;
+        .create_test {
+            button.test.preview {
+                background: white;
+                color: #4782BC;
+                border: 1px solid #4782BC;
+            }
+          
+            button.test {
+                background: #4782BC;
+                border: none;
+                color: #ffffff;
+                border-radius: 50px;
+                font-weight: 500;
+                font-size: 14px;
+                padding: 7px 25px;
+            }
+        }
+    }
+    .assessment_tab {
+        width: 100%;
+        div#v-pills-tab {
+            width: 15%;
+            button.nav-link.active {
+                background: #4782BC;
+    border: none;
+    color: #ffffff;
+    border-radius: 0px;
+            }
+            button.nav-link {
+                padding: 14px;
+                text-align: left;
+                border: 1px solid #E8E8E8;
+                color: #5c5c5c;
+                font-size: 15px;
+                border-radius: 0px;
+            }
+        }
+        div#v-pills-tabContent {
+            width: 85%;
+        }
+    }
+}

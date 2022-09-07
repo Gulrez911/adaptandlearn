@@ -1,0 +1,90 @@
+{
+  "metadata": {
+    "name": "${APP_USER}"
+  },
+  "projects": [
+    {
+      "name": "${APP_USER}",
+      "source": {
+        "location": "${GIT_CODEBASE_LINK}",
+        "type": "git"
+      }
+    }
+  ],
+  "components": [
+    {
+      "id": "ms-python/python/latest",
+      "memoryLimit": "1280MiB",
+      "type": "chePlugin"
+    },
+    {
+      "mountSources": true,
+      "endpoints": [
+        {
+          "name": "django",
+          "port": 7000
+        }
+      ],
+      "memoryLimit": "1280MiB",
+      "type": "dockerimage",
+      "alias": "python",
+      "image": "quay.io/eclipse/che-python-3.7:7.7.0"
+    }
+  ],
+  "apiVersion": "1.0.0",
+  "commands": [
+    {
+      "name": "install dependencies",
+      "actions": [
+        {
+          "workdir": "${CHE_PROJECTS_ROOT}/${APP_USER_CODE}",
+          "type": "exec",
+          "command": "pip install --user -r requirements.txt && pip install --user ptvsd",
+          "component": "python"
+        }
+      ]
+    },
+    {
+      "name": "migrate",
+      "actions": [
+        {
+          "workdir": "${CHE_PROJECTS_ROOT}/${APP_USER_CODE}",
+          "type": "exec",
+          "command": "python manage.py migrate",
+          "component": "python"
+        }
+      ]
+    },
+    {
+      "name": "run server",
+      "actions": [
+        {
+          "workdir": "${CHE_PROJECTS_ROOT}/${APP_USER_CODE}",
+          "type": "exec",
+          "command": "export DEBUG_MODE=False && python manage.py runserver 0.0.0.0:7000",
+          "component": "python"
+        }
+      ]
+    },
+    {
+      "name": "run server in debug mode",
+      "actions": [
+        {
+          "workdir": "${CHE_PROJECTS_ROOT}/${APP_USER_CODE}",
+          "type": "exec",
+          "command": "export DEBUG_MODE=True && python manage.py runserver 0.0.0.0:7000 --noreload --nothreading",
+          "component": "python"
+        }
+      ]
+    },
+    {
+      "name": "debug",
+      "actions": [
+        {
+          "referenceContent": "{ \"version\": \"0.2.0\", \"configurations\": [\n  {\n    \"name\": \"Python: Remote Attach\",\n    \"type\": \"python\",\n    \"request\": \"attach\",\n    \"port\": 5678,\n    \"host\": \"0.0.0.0\",\n    \"pathMappings\": [\n      {\n          \"localRoot\": \"${workspaceFolder}\",\n          \"remoteRoot\": \"${workspaceFolder}\"\n      }\n    ]\n  }]\n}\n",
+          "type": "vscode-launch"
+        }
+      ]
+    }
+  ]
+}

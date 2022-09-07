@@ -1,0 +1,74 @@
+swagger: "2.0"
+info:
+  description: "Yaksha API"
+  version: "1.0.0"
+  title: "Yaksha API"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "jatin.sutaria@thev2technologies.com"
+  license:
+    name: "Proprietary Liense - Can be used by Dell"
+host: "ide.yaksha.online"
+basePath: "/"
+tags:
+- name: "yaksha"
+  description: "APIs to create/read/update/delete assessments & fetch results and anlytics"
+  externalDocs:
+    description: "Find out more"
+    url: "https://ide.yaksha.online/"
+schemes:
+- "https"
+- "http"
+paths:
+  /yaksha/getAssessmentURLForLMSLearner:
+    get:
+      summary: "Get Assessment URL for a Test Taker for a giver test name and email"
+      description: "Multiple status values can be provided with comma separated strings"
+      operationId: "getAssessmentURLForLMSLearner"
+      parameters:
+      - name: "testName"
+        in: "query"
+        description: "A unique test name as obtained through an offline mode"
+        required: true
+        type: "string"
+        default: "20MLA_BLR_03_Unix"
+        collectionFormat: "multi"
+      - name: "companyId"
+        in: "query"
+        description: "A constant value (IH) across all invocations"
+        required: true
+        type: "string"
+        default: "IH"
+        collectionFormat: "multi"
+      - name: "learnerEmail"
+        in: "query"
+        description: "A test taker email"
+        required: true
+        type: "string"
+        default: "learnerEmail@lms.com"
+      - name: "learnerfirstName"
+        in: "query"
+        description: "Test Taker First Name"
+        required: true
+        type: "string"
+        default: "First"
+        collectionFormat: "multi"
+      - name: "learnerLastName"
+        in: "query"
+        description: "Test Taker Last Name"
+        required: true
+        type: "string"
+        default: "Last"
+      - name: "securitytoken"
+        in: "header"
+        description: "Static"
+        required: true
+        type: string
+        default: "QWERTY"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "string"
+        "400":
+          description: "Invalid status value"

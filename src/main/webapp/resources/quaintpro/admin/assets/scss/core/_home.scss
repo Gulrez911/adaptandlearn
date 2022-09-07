@@ -1,0 +1,1584 @@
+// ==========Section Code Start===========
+section {
+    padding: 55px 0px;
+
+    .question_bank.problem_page_sec {
+        .general_field_btn.text-center {
+            button.save {
+                background: $buttonbg;
+                border-radius: 10px;
+                color: white;
+                border: none;
+                padding: 8px 20px;
+                font-weight: 400;
+                font-size: 15px;
+                line-height: 24px;
+            }
+        }
+
+        .problem_page {
+            box-shadow: 0px 4px 10px rgb(208 219 232 / 25%);
+            padding-bottom: 1px;
+        }
+
+        .Problem_Details.question_bank_tab {
+            border: 1px solid #E8E8E8;
+            padding: 15px;
+            margin-top: 25px;
+        }
+    }
+
+    .question_bank {
+        .question_bank_tab {
+            div.tab-content {
+                margin-top: 20px;
+
+                .Problems_tab.Candidates {
+                    .general_field_btn .Send_invit {
+                        background: $buttonbg;
+                        border-radius: 10px;
+                        color: $white;
+                        border: none;
+                        padding: 8px 20px;
+                        font-weight: 400;
+                        font-size: 15px;
+                        margin-top: 18px;
+                        line-height: 24px;
+                    }
+
+                    .condidate_table {
+                        margin-top: 15px;
+
+                        .table_scroll {
+                            overflow-x: auto;
+                            -webkit-overflow-scrolling: touch;
+                        }
+
+                        .pagination_box {
+                            .pagination {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                gap: 16px;
+                                margin-top: 55px;
+                            }
+
+                            .pages {
+                                display: flex;
+                                flex-direction: row;
+                                gap: 20px;
+                            }
+
+                            .page {
+                                height: 40px;
+                                width: 40px;
+                                cursor: pointer;
+                                color: #C6C6C6;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                gap: 10px;
+                                font-weight: 500;
+                                font-size: 18px;
+                                text-decoration: none;
+                                // color: $pagination;
+                            }
+
+                            .page:hover {
+                                color: $activebg;
+                            }
+
+                            .active {
+                                color: $activebg;
+                            }
+
+                            .btn.active {
+                                background-color: $activebg;
+                                border: 1px solid $activebg;
+                                color: $white;
+                            }
+
+                            .btn {
+                                border: 1px solid #C6C6C6;
+                                color: #C6C6C6;
+                                height: 42px;
+                                width: 45px;
+                                cursor: pointer;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
+
+
+                        }
+
+                        table {
+                            thead {
+                                border: 1px solid #E8E8E8;
+                                background: $navbg;
+
+                                tr {
+                                    th {
+                                        font-weight: 400;
+                                        font-size: 16px;
+                                        line-height: 24px;
+                                        padding: 20px 10px;
+                                    }
+                                }
+                            }
+
+                            tbody {
+                                border: 1px solid #E8E8E8;
+                                border-top: 0px solid currentColor;
+
+                                tr {
+                                    border-bottom: 1px solid #E8E8E8;
+
+                                    td {
+                                        font-weight: 500;
+                                        font-size: 16px;
+                                        line-height: 24px;
+                                        padding: 20px 10px;
+                                        vertical-align: middle;
+
+                                        p.pend {
+                                            margin: 0px;
+                                            color: #FFBD81;
+                                        }
+
+                                        p.rejec {
+                                            margin: 0px;
+                                            color: #FF8D8D;
+                                        }
+
+                                        p.accept {
+                                            margin: 0px;
+                                            color: #88EA86;
+                                        }
+
+                                        .condidate_box {
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: flex-start;
+
+                                            .condidate_name {
+                                                h4 {
+                                                    margin: 0px;
+                                                    font-weight: 500;
+                                                    font-size: 16px;
+                                                    color: $black;
+                                                }
+
+                                                p {
+                                                    font-weight: 400;
+                                                    font-size: 14px;
+                                                    margin: 0px;
+                                                    color: $black;
+                                                }
+                                            }
+
+                                            .condidate_icon.ac_1 {
+                                                background: #8DFFB4;
+                                            }
+
+                                            .condidate_icon.ac_2 {
+                                                background: #8DA0FF;
+                                            }
+
+                                            .condidate_icon.ac_3 {
+                                                background: #FF1321;
+                                            }
+
+                                            .condidate_icon {
+                                                width: 55px;
+                                                height: 55px;
+                                                line-height: 55px;
+                                                background: #FFBD81;
+                                                text-align: center;
+                                                margin-right: 20px;
+                                                color: #ffffff;
+                                                border-radius: 50%;
+
+                                                p {
+                                                    margin: 0px;
+                                                    font-weight: 600;
+                                                    font-size: 20px;
+                                                }
+                                            }
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .recent_test {
+                        .recent_test_heading.filters {
+                            p.clear {
+                                font-weight: 400;
+                                font-size: 14px;
+                                color: $buttonbg;
+                            }
+                        }
+                    }
+
+                    .question_bank {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin-bottom: 25px;
+
+                        .search .wrap {
+                            width: 360px;
+                            margin: 0px;
+                        }
+
+                        .download_report {
+                            button.report {
+                                background: none;
+                                border-radius: 50px;
+                                padding: 6px 25px;
+                                border: 2px solid $buttonbg;
+                                font-weight: 500;
+                                font-size: 14px;
+                                color: $black;
+
+                                img {
+                                    margin-right: 5px;
+                                    width: 16px;
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+                .Problems_tab {
+                    .general {
+                        h3 {
+                            font-weight: 600;
+                            font-size: 20px;
+                            line-height: 30px;
+                            color: $black;
+                        }
+
+                        small {
+                            font-weight: 400;
+                            font-size: 13px;
+                            line-height: 21px;
+                            color: #C6C6C6;
+                        }
+
+                        .general_form {
+                            margin-top: 25px;
+
+                            .general_field_btn.text-center {
+                                button.save {
+                                    background: $buttonbg;
+                                    border-radius: 10px;
+                                    color: white;
+                                    border: none;
+                                    padding: 8px 20px;
+                                    font-weight: 400;
+                                    font-size: 15px;
+                                    line-height: 24px;
+                                }
+                            }
+
+                            .general_field {
+                                textarea {
+                                    border: 1px solid #E8E8E8;
+                                    border-radius: 10px;
+                                    height: 391px;
+                                    resize: none;
+
+                                    &:focus {
+                                        background-color: #fff;
+                                        border-color: $buttonbg;
+                                        outline: 0;
+                                        box-shadow: 0 0 0 0rem rgb(13 110 253 / 25%);
+                                    }
+                                }
+
+                                .form-check {
+                                    display: inline-block;
+                                    margin-right: 70px;
+
+                                    [type="radio"]:checked,
+                                    [type="radio"]:not(:checked) {
+                                        position: absolute;
+                                        left: -9999px;
+                                    }
+
+                                    [type="radio"]:checked+label,
+                                    [type="radio"]:not(:checked)+label {
+                                        position: relative;
+                                        padding-left: 28px;
+                                        cursor: pointer;
+                                        line-height: 20px;
+                                        display: inline-block;
+                                        color: #666;
+                                    }
+
+                                    [type="radio"]:checked+label:before,
+                                    [type="radio"]:not(:checked)+label:before {
+                                        content: '';
+                                        position: absolute;
+                                        left: 0;
+                                        top: 0;
+                                        width: 18px;
+                                        height: 18px;
+                                        border: 1px solid #ddd;
+                                        border-radius: 100%;
+                                        background: #fff;
+                                    }
+
+                                    [type="radio"]:checked+label:after,
+                                    [type="radio"]:not(:checked)+label:after {
+                                        content: '';
+
+                                        width: 12px;
+                                        height: 12px;
+                                        background: #E3E3E3;
+                                        position: absolute;
+                                        top: 3px;
+                                        left: 3px;
+                                        border-radius: 100%;
+                                        -webkit-transition: all 0.2s ease;
+                                        transition: all 0.2s ease;
+                                    }
+
+                                    [type="radio"]:not(:checked)+label:after {
+                                        opacity: 0;
+                                        -webkit-transform: scale(0);
+                                        transform: scale(0);
+                                    }
+
+                                    [type="radio"]:checked+label:after {
+                                        opacity: 1;
+                                        -webkit-transform: scale(1);
+                                        transform: scale(1);
+                                    }
+                                }
+
+                                select.form-select {
+                                    height: 48px;
+                                    border: 1px solid #E8E8E8;
+                                    border-radius: 10px;
+
+                                    &:focus {
+                                        background-color: #fff;
+                                        border-color: $buttonbg;
+                                        outline: 0;
+                                        box-shadow: 0 0 0 0rem rgb(13 110 253 / 25%);
+                                    }
+                                }
+
+                                small {
+                                    font-weight: 300;
+                                    font-size: 14px;
+                                    line-height: 21px;
+                                    color: #C6C6C6;
+                                }
+
+                                input {
+                                    height: 48px;
+                                    background: #FFFFFF;
+                                    border: 1px solid #E8E8E8;
+                                    border-radius: 10px;
+
+                                    &:focus {
+                                        background-color: #fff;
+                                        border-color: $buttonbg;
+                                        outline: 0;
+                                        box-shadow: 0 0 0 0rem rgb(13 110 253 / 25%);
+                                    }
+                                }
+
+                                .skill_active {
+                                    border-bottom: 1px solid #E8E8E8;
+                                    padding-bottom: 35px;
+
+                                    ul {
+                                        padding: 0px;
+                                        list-style-type: none;
+                                        margin: 0px;
+                                        box-shadow: none;
+
+                                        li {
+                                            display: inline-block;
+                                            margin-right: 25px;
+                                            margin-left: 0;
+                                            margin-top: 15px;
+
+                                            a {
+                                                text-decoration: none;
+                                                color: #000000;
+                                                border: 1px solid #E8E8E8;
+                                                border-radius: 7px;
+                                                padding: 8px 18px;
+                                                font-size: 14px;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .date_time {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+
+                                    input {
+                                        width: 48%;
+                                    }
+                                }
+
+                                label {
+                                    font-weight: 500;
+                                    font-size: 16px;
+                                    line-height: 15px;
+                                    margin-bottom: 10px;
+                                    color: $black;
+                                    width: 100%;
+
+                                    small {
+                                        font-weight: 400;
+                                        font-size: 13px;
+                                        line-height: 21px;
+                                        color: #C6C6C6;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .section_1 {
+                        border: 1px solid #E8E8E8;
+                        padding: 20px;
+
+                        .time_setting_heading {
+                            border-top: 1px solid #E8E8E8;
+                            padding-top: 24px;
+                        }
+
+                        h3 {
+                            font-weight: 600;
+                            font-size: 20px;
+                            line-height: 30px;
+                            margin: 0px;
+                        }
+
+                        .info {
+                            padding: 8px 20px;
+                            background: #F8F8F8;
+                            border-radius: 6px;
+                            margin-top: 10px;
+
+                            p {
+                                margin: 0px;
+                                font-weight: 400;
+                                font-size: 12px;
+                                line-height: 18px;
+                                color: $black;
+
+                                img {
+                                    margin-right: 6px;
+                                }
+                            }
+                        }
+
+                        .test_sub {
+                            margin-top: 30px;
+                            margin-top: 30px;
+                            padding-bottom: 30px;
+                            border-bottom: 1px solid #E8E8E8;
+
+                            h3 {
+                                font-weight: 500;
+                                font-size: 20px;
+                                line-height: 30px;
+                                margin-bottom: 15px;
+                            }
+
+                            ul {
+                                padding: 0px;
+                                margin: 0px;
+                                list-style-type: none;
+                                box-shadow: none;
+
+                                li {
+                                    display: inline-block;
+                                    font-weight: 400;
+                                    font-size: 14px;
+                                    line-height: 21px;
+
+                                    img {
+                                        width: 18px;
+                                        margin-right: 5px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            ul {
+                justify-content: center;
+                border-bottom: 0px solid #dee2e6;
+                box-shadow: 0px 4px 10px rgb(208 219 232 / 25%);
+
+                li {
+                    margin: 0px 12px 0px;
+
+                    button.nav-link {
+                        border: none;
+                        font-weight: 400;
+                        font-size: 18px;
+                        line-height: 27px;
+                        color: #3E3E3E;
+
+                        &:hover {
+                            border: none;
+                        }
+                    }
+
+                    button.active {
+                        border: none;
+                        font-weight: 500;
+                        font-size: 18px;
+                        line-height: 27px;
+                        color: $black;
+                        border-bottom: 2px solid $buttonbg  !important;
+                    }
+                }
+            }
+        }
+
+        .question_bank_tab.Test_Analytics_sec {
+            .Score_Distribution_box {
+                background: $white;
+                box-shadow: 0px 0px 10px rgb(208 219 232 / 35%);
+                border-radius: 14px;
+                padding: 20px;
+                margin-top: 20px;
+
+                p {
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 30px;
+                    margin-bottom: 12px;
+                    color: $black;
+                }
+            }
+
+            .Test_Statistic_box {
+                background: $white;
+                box-shadow: 0px 0px 10px rgb(208 219 232 / 35%);
+                border-radius: 14px;
+                padding: 20px;
+
+                p {
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 30px;
+                    margin-bottom: 12px;
+                    color: $black;
+                }
+
+                .condidate_test.submi {
+                    background: #FFD1A6;
+                }
+
+                .condidate_test.correct {
+                    background: #92F390;
+                }
+
+                .condidate_test {
+                    background: #9EB7D0;
+                    border-radius: 14px;
+                    padding: 20px;
+
+                    h3 {
+                        color: $white;
+                        font-weight: 600;
+                        font-size: 38px;
+                        line-height: 60px;
+                        margin: 0px;
+                    }
+
+                    p {
+                        margin: 0px;
+                        font-weight: 500;
+                        font-size: 18px;
+                        line-height: 30px;
+                        color: $white;
+                    }
+                }
+            }
+        }
+
+        .dashboard_heading {
+            align-items: baseline;
+
+            h2 {
+                font-weight: 600;
+                font-size: 30px;
+                line-height: 45px;
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                font-size: 25px;
+
+                button.open.close.op {
+                    background: #88EA86;
+                }
+
+                button.open.close {
+                    border: none;
+                    background: $boxfirst;
+                    color: $white;
+                    border-radius: 50px;
+                    font-size: 14px;
+                    padding: 8px 20px;
+                    margin-bottom: 10px;
+                    margin-left: 20px;
+
+                }
+            }
+
+            ul {
+                margin: 0px;
+                padding: 0px;
+                list-style-type: none;
+
+                li {
+                    display: inline-block;
+                    margin-right: 22px;
+
+                    img {
+                        width: 18px;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+    }
+
+    .search {
+        .search {
+            width: 100%;
+            position: relative;
+            display: flex;
+        }
+
+        .searchTerm {
+            width: 655px;
+            height: 65px;
+            background: $white;
+            border: 1px solid $bordercolor;
+            border-right: 0px;
+            border-radius: 16px 0px 0px 16px;
+            padding: 10px;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 27px;
+            color: $black;
+        }
+
+        .searchTerm:focus-visible {
+            outline: -webkit-focus-ring-color auto 0px;
+        }
+
+
+        .searchButton {
+            height: auto;
+            border: 1px solid $bordercolor;
+            border-left: 0px;
+            text-align: center;
+            color: $black;
+            padding-right: 25px;
+            background: $white;
+            border-radius: 0 16px 16px 0;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .wrap {
+            width: 50%;
+            margin: 0px auto 30px;
+        }
+    }
+
+    .dashboard_heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+
+        h3 {
+            margin: 0px;
+            font-weight: 600;
+            font-size: 25px;
+            color: $black;
+        }
+
+        .create_test {
+            button.test.mr-2 {
+                margin-right: 10px;
+            }
+
+            button.test {
+                background: $buttonbg;
+                border: none;
+                color: $white;
+                border-radius: 50px;
+                font-weight: 500;
+                font-size: 14px;
+                padding: 7px 25px;
+
+                img {
+                    width: 22px;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+
+    .recent_test.results {
+        .condidate_table {
+            .table_scroll {
+                display: block;
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+
+                // height: 100%;
+                // overflow: auto;
+                // max-height: 700px;
+                table {
+                    thead {
+                        border: 1px solid #E8E8E8;
+                        background: #F8F8F8;
+
+                        tr th {
+                            font-weight: 600;
+                            font-size: 16px;
+                            line-height: 24px;
+                            padding: 18px 10px;
+                        }
+                    }
+
+                    tbody {
+                        border: 1px solid #E8E8E8;
+                        border-top: 0px solid currentColor;
+
+                        tr {
+                            td {
+                                font-weight: 500;
+                                font-size: 16px;
+                                line-height: 24px;
+                                padding: 21.4px 10px;
+                                vertical-align: middle;
+
+                                .test_result {
+                                    transform: translateY(0);
+                                    transition: 0.1s;
+                                    position: relative;
+
+                                    span {
+                                        position: absolute;
+                                        bottom: calc(100% + 12px);
+                                        width: max-content;
+                                        left: 50%;
+                                        pointer-events: none;
+                                        transform: translateX(-50%);
+                                        opacity: 0;
+                                        font-weight: 400;
+                                        font-size: 12px;
+                                        background: #4782BC;
+                                        padding: 3px 7px;
+                                        color: #FFF;
+                                        border-radius: 4px;
+
+                                        &::before {
+                                            content: '';
+                                            position: absolute;
+                                            top: 100%;
+                                            left: 50%;
+                                            transform: translateX(-50%);
+                                            width: 0;
+                                            height: 0;
+                                            border-left: 7px solid transparent;
+                                            border-right: 7px solid transparent;
+                                            border-top: 8px solid #4782BC;
+                                        }
+                                    }
+
+                                    &:hover,
+                                    &.active {
+                                        span {
+                                            animation: show-tool-tip 5s;
+                                            animation-delay: 0.1s;
+                                        }
+                                    }
+                                }
+
+                                @keyframes show-tool-tip {
+                                    0% {
+                                        opacity: 0;
+                                    }
+
+                                    5% {
+                                        opacity: 1;
+                                    }
+
+                                    95% {
+                                        opacity: 1;
+                                    }
+
+                                    100% {
+                                        opacity: 0;
+                                    }
+                                }
+
+                                .fail {
+                                    transform: translateY(0);
+                                    transition: 0.1s;
+                                    position: relative;
+
+                                    span {
+                                        position: absolute;
+                                        bottom: calc(100% + 12px);
+                                        width: max-content;
+                                        left: 50%;
+                                        pointer-events: none;
+                                        transform: translateX(-50%);
+                                        opacity: 0;
+                                        font-weight: 400;
+                                        font-size: 12px;
+                                        background: #FF1321;
+                                        padding: 3px 7px;
+                                        color: #FFF;
+                                        border-radius: 4px;
+
+                                        &::before {
+                                            content: '';
+                                            position: absolute;
+                                            top: 100%;
+                                            left: 50%;
+                                            transform: translateX(-50%);
+                                            width: 0;
+                                            height: 0;
+                                            border-left: 7px solid transparent;
+                                            border-right: 7px solid transparent;
+                                            border-top: 8px solid #FF1321;
+                                        }
+                                    }
+
+                                    &:hover,
+                                    &.active {
+                                        span {
+                                            animation: show-tool-tip 5s;
+                                            animation-delay: 0.1s;
+                                        }
+                                    }
+                                }
+
+                                @keyframes show-tool-tip {
+                                    0% {
+                                        opacity: 0;
+                                    }
+
+                                    5% {
+                                        opacity: 1;
+                                    }
+
+                                    95% {
+                                        opacity: 1;
+                                    }
+
+                                    100% {
+                                        opacity: 0;
+                                    }
+                                }
+
+
+                                .pass_score {
+                                    transform: translateY(0);
+                                    transition: 0.1s;
+                                    position: relative;
+
+                                    span {
+                                        position: absolute;
+                                        bottom: calc(100% + 12px);
+                                        width: max-content;
+                                        left: 50%;
+                                        pointer-events: none;
+                                        transform: translateX(-50%);
+                                        opacity: 0;
+                                        font-weight: 400;
+                                        font-size: 12px;
+                                        background: #1da01a;
+                                        padding: 3px 7px;
+                                        color: #FFF;
+                                        border-radius: 4px;
+
+                                        &::before {
+                                            content: '';
+                                            position: absolute;
+                                            top: 100%;
+                                            left: 50%;
+                                            transform: translateX(-50%);
+                                            width: 0;
+                                            height: 0;
+                                            border-left: 7px solid transparent;
+                                            border-right: 7px solid transparent;
+                                            border-top: 8px solid #1da01a;
+                                        }
+                                    }
+
+                                    &:hover,
+                                    &.active {
+                                        span {
+                                            animation: show-tool-tip 5s;
+                                            animation-delay: 0.1s;
+                                        }
+                                    }
+                                }
+
+                                @keyframes show-tool-tip {
+                                    0% {
+                                        opacity: 0;
+                                    }
+
+                                    5% {
+                                        opacity: 1;
+                                    }
+
+                                    95% {
+                                        opacity: 1;
+                                    }
+
+                                    100% {
+                                        opacity: 0;
+                                    }
+                                }
+
+                                p.accept {
+                                    margin: 0px;
+
+                                    a {
+                                        color: #212529;
+                                    }
+                                }
+
+                                p.pass {
+                                    margin: 0px;
+
+                                    a {
+                                        color: #212529;
+                                    }
+                                }
+
+                                a {
+                                    text-decoration: none;
+
+                                    .condidate_box {
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: flex-start;
+
+                                        .condidate_name {
+                                            h4 {
+                                                margin: 0px;
+                                                font-weight: 500;
+                                                font-size: 16px;
+                                                color: #1B1B1B;
+                                            }
+
+                                            p {
+                                                font-weight: 400;
+                                                font-size: 14px;
+                                                margin: 0px;
+                                                color: #1B1B1B;
+                                            }
+                                        }
+
+                                        .condidate_icon.ac_1 {
+                                            background: #8DFFB4;
+                                        }
+
+                                        .condidate_icon.ac_2 {
+                                            background: #FFB1B1;
+                                        }
+
+                                        .condidate_icon.ac_3 {
+                                            background: #C9DFF4;
+                                        }
+
+                                        .condidate_icon.ac_4 {
+                                            background: #8DA0FF;
+                                        }
+
+                                        .condidate_icon.ac_5 {
+                                            background: #FF1321;
+                                        }
+
+                                        .condidate_icon {
+                                            width: 48px;
+                                            height: 48px;
+                                            line-height: 48px;
+                                            background: #FFBD81;
+                                            text-align: center;
+                                            margin-right: 15px;
+                                            color: #ffffff;
+                                            border-radius: 50%;
+
+                                            p {
+                                                margin: 0px;
+                                                font-weight: 400;
+                                                font-size: 16px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .recent_test_heading.footer.test_next.text-center {
+        background: none;
+    }
+    .recent_test {
+        .recent_test_heading.filters {
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 30px;
+            color: $black;
+        }
+
+        .recent_test_heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: $navbg;
+
+            p {
+                margin: 0px;
+            }
+        }
+
+        .recent_test_body.Activity_Feed {
+            padding: 25px 20px 35px;
+
+            .feed_box {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 1px solid $bordercolor;
+                padding: 15px 0px;
+
+                .condidate_box {
+                    margin: 0px;
+                }
+
+                .time {
+                    p {
+                        margin: 0px;
+                        font-weight: 400;
+                        font-size: 16px;
+                        color: $headermenu;
+                    }
+                }
+            }
+        }
+
+        .recent_test_body.ques_bank {
+            padding: 22px 20px;
+
+            .recent_test_card {
+                .ques_bank_box {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .question_left {
+                        .top {
+                            margin-bottom: 15px;
+                        }
+                    }
+
+                    .question_right {
+                        width: 30%;
+                        text-align: right;
+
+                        ul {
+                            li {
+                                margin: 0px 0px 0px 20px;
+
+                                a {
+                                    img {
+                                        width: auto;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .recent_test_body.filters_box.General_Tests {
+            padding: 20px;
+            height: 320px;
+            overflow: auto;
+        }
+
+        .recent_test_body.filters_box {
+            padding: 20px;
+
+
+            .conducted {
+                ul {
+                    padding: 0px;
+                    margin: 0px;
+                    list-style-type: none;
+                    box-shadow: none;
+
+                    li {
+                        border-bottom: 1px dashed #E8E8E8;
+                        padding: 8px 0px;
+
+                        &:last-child {
+                            border-bottom: 0px dashed #E8E8E8;
+                        }
+
+                        a {
+                            text-decoration: none;
+                            font-weight: 400;
+                            font-size: 16px;
+                            line-height: 24px;
+                            color: #1B1B1B;
+                        }
+                    }
+                }
+
+                h4 {
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: $headermenu;
+                    margin-bottom: 9px;
+                }
+
+                p {
+                    margin: 0px;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: $black;
+
+                }
+            }
+
+            .dropdown {
+                .dropdown-menu {
+                    position: relative !important;
+                    border: 0px;
+                    box-shadow: none;
+                    padding: 0px;
+                    background: none;
+
+                    li {
+
+                        .dropdown-item:focus,
+                        .dropdown-item:hover {
+                            color: #1e2125;
+                            background-color: #ffffff00;
+                        }
+                    }
+                }
+
+                .menu_heading {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    cursor: pointer;
+
+                    p {
+                        font-weight: 400;
+                        margin: 0px;
+                        font-size: 16px;
+                        line-height: 24px;
+                    }
+                }
+            }
+
+            .question_filter {
+                background: #FFFFFF;
+                box-shadow: 0px 0px 6px #dbdbdb;
+                border-radius: 8px;
+                padding: 15px 15px;
+                margin-bottom: 20px;
+
+                a {
+                    text-decoration: none;
+
+                    .ques_type {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        p {
+                            margin: 0px;
+                            font-weight: 400;
+                            font-size: 14px;
+                            line-height: 21px;
+                            color: black;
+                        }
+                    }
+                }
+            }
+        }
+
+        .recent_test_body.problem_type {
+            ul {
+                padding: 0px;
+                margin: 0px;
+                list-style-type: none;
+
+                li {
+                    display: inline-block;
+                    margin: 6px 7px;
+
+                    a {
+                        color: black;
+                        text-decoration: none;
+                        background: #E8E8E8;
+                        border-radius: 20px;
+                        font-weight: 400;
+                        font-size: 14px;
+                        line-height: 21px;
+                        padding: 6px 10px;
+                    }
+                }
+            }
+        }
+
+        .recent_test_body.difficulty_box {
+            .diff_range {
+                margin-bottom: 45px;
+            }
+
+            .text_sec {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                z-index: 99999;
+
+                p {
+                    margin: 0px;
+                    font-weight: 500;
+                    font-size: 12px;
+                    color: $black;
+                }
+            }
+
+            .container {
+                height: 15px;
+                padding: 0px;
+                margin: 0 auto 8px auto;
+                background: #F3F3F3;
+                border-radius: 25px;
+            }
+
+            .dragger {
+                width: 26px;
+                height: 26px;
+                top: -8px !important;
+                color: #FFF;
+                font-weight: 600;
+                line-height: 70px;
+                background-color: $buttonbg;
+                border-radius: 25px;
+            }
+
+            .progress {
+                width: 0px;
+                background-color: #4c6986;
+                height: 15px !important;
+                border-radius: 25px;
+            }
+        }
+
+        .recent_test_body {
+            border: 1px solid $bordercolor;
+            padding: 35px 20px;
+
+            .question_box {
+                .general_field {
+                    .form-group {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        grid-gap: 30px;
+                        margin-top: 40px;
+                        margin-left: 50px;
+
+                        .form-check {
+                            border-radius: 41px;
+                            background-color: #f2f2f2;
+                            padding: 10px 25px;
+                            font-size: 18px;
+                            input {
+                                cursor: pointer;
+                            }
+                            label{
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+
+                p {
+                    display: flex;
+
+                    span {
+                        width: 32px;
+                        height: 32px;
+                        border-radius: 50%;
+                        line-height: 32px;
+                        display: block;
+                        text-align: center;
+                        margin-right: 12px;
+                        background: #4782bc;
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: white;
+                    }
+                }
+            }
+
+            .filter_checkbox {
+                margin-bottom: 28px;
+
+                p {
+                    margin: 0px;
+                    font-size: 14px;
+                    padding-inline-start: 46px;
+                }
+
+                ul {
+                    box-shadow: none;
+                    margin-top: 5px;
+                    margin-bottom: 0px;
+                    padding: 0px;
+                    padding-inline-start: 46px;
+
+                    li {
+                        font-size: 13px;
+                    }
+                }
+            }
+
+            .filter_checkbox {
+
+                .form-group {
+                    display: block;
+                    margin-bottom: 15px;
+                }
+
+                .form-group input {
+                    padding: 0;
+                    height: initial;
+                    width: initial;
+                    margin-bottom: 0;
+                    display: none;
+                    cursor: pointer;
+                }
+
+                .form-group label {
+                    position: relative;
+                    cursor: pointer;
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: $black;
+                }
+
+                .form-group label:before {
+                    content: "";
+                    -webkit-appearance: none;
+                    background-color: transparent;
+                    border: 1px solid #E8E8E8;
+                    border-radius: 6px;
+                    padding: 10px;
+                    width: 28px;
+                    height: 28px;
+                    display: inline-block;
+                    position: relative;
+                    vertical-align: middle;
+                    cursor: pointer;
+                    margin-right: 12px;
+                }
+
+                .form-group input:checked+label:after {
+                    content: '';
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: 5px;
+                    left: 11px;
+                    width: 6px;
+                    height: 14px;
+                    border: solid $buttonbg;
+                    border-width: 0 2px 2px 0;
+                    transform: rotate(45deg);
+                }
+            }
+
+            .invite_candidates_btn {
+                text-align: center;
+
+                button.condidate {
+                    background: $buttonbg;
+                    border-radius: 10px;
+                    border: none;
+                    color: $white;
+                    padding: 10px;
+                    font-weight: 500;
+                    font-size: 14px;
+                    width: 100%;
+
+                    img {
+                        margin-right: 5px;
+                        width: 20px;
+                    }
+                }
+            }
+
+            .condidate_box {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                margin-top: 31.1px;
+
+                .condidate_name {
+                    h4 {
+                        margin: 0px;
+                        font-weight: 500;
+                        font-size: 16px;
+                        color: $black;
+                    }
+
+                    p {
+                        font-weight: 400;
+                        font-size: 14px;
+                        margin: 0px;
+                        color: $black;
+                    }
+                }
+
+                .condidate_icon.ac {
+                    background: $condidateboxbg2;
+                }
+
+                .condidate_icon.ac1 {
+                    background: $condidateboxbg1;
+                }
+
+                .condidate_icon.ac2 {
+                    background: $boxfirst1;
+                }
+
+                .condidate_icon.ac3 {
+                    background: $boxfirst4;
+                }
+
+                .condidate_icon.ac4 {
+                    background: $boxfirst41;
+                }
+
+                .condidate_icon {
+
+                    line-height: 55px;
+                    background: $boxfirst2;
+                    text-align: center;
+                    margin-right: 20px;
+                    color: $white;
+                    border-radius: 50%;
+
+                    p {
+                        width: 55px;
+                        height: 55px;
+                        margin: 0px;
+                        font-weight: 600;
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            .recent_test_card {
+                padding-bottom: 15px;
+                border-bottom: 1px solid $bordercolor;
+                margin-bottom: 20px;
+
+                .top {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 20px;
+
+                    h3 {
+                        margin: 0px 35px 0px 0px;
+                        font-weight: 500;
+                        font-size: 20px;
+                        line-height: 30px;
+                        color: $black;
+                    }
+
+                    button.open.close {
+                        background: #FF8F88;
+                    }
+
+                    button.open {
+                        background: $openbtn;
+                        border-radius: 40px;
+                        border: none;
+                        color: $white;
+                        padding: 2px 28px;
+                        font-weight: 500;
+                        font-size: 14px;
+                    }
+                }
+
+                ul {
+                    padding: 0px;
+                    margin: 0px;
+                    list-style-type: none;
+
+                    li {
+                        display: inline-block;
+                        margin-right: 12px;
+                        font-weight: 400;
+                        font-size: 14px;
+                        color: $headermenu;
+
+                        img {
+                            width: 18px;
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ==========Section Code End===========

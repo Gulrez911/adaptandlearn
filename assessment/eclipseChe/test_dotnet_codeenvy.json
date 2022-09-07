@@ -1,0 +1,87 @@
+{
+"defaultEnv": "default",
+"environments": [
+{
+"machineConfigs": [
+{
+"dev": true,
+"servers": [ ],
+"envVariables": { },
+"limits": {
+"ram": 1000
+},
+"source": {
+"type": "dockerfile",
+"content": "FROM codenvy/dotnet_core"
+},
+"name": "default",
+"type": "docker",
+"links": []
+}
+],
+"name": "default"
+}
+],
+"commands": [
+{
+"commandLine": "cd ${current.project.path} && dotnet restore",
+"name": "update dependencies",
+"type": "custom",
+"attributes": {
+"previewUrl": ""
+}
+},
+{
+"commandLine": "cd ${current.project.path} && dotnet run",
+"name": "run",
+"type": "custom",
+"attributes": {
+"previewUrl": "http://${server.port.5000}"
+}
+},
+{
+"commandLine": "cd /projects/aspnet-web-simple && dotnet restore",
+"name": "aspnet-web-simple: update dependencies",
+"type": "custom",
+"attributes": {
+"previewUrl": ""
+}
+},
+{
+"commandLine": "cd /projects/aspnet-web-simple && dotnet run",
+"name": "aspnet-web-simple: run",
+"type": "custom",
+"attributes": {
+"previewUrl": "http://${server.port.5000}"
+}
+}
+],
+"projects": [{
+"links": [],
+"name": "aspnet-web-simple",
+"attributes": {
+"vcs.provider.name": [
+"git"
+],
+"git.current.branch.name": [
+"master"
+],
+"git.repository.remotes": [
+"https://github.com/che-samples/aspnet-web-simple.git"
+]
+},
+"type": "blank",
+"source": {
+"location": "https://github.com/che-samples/aspnet-web-simple.git",
+"type": "git",
+"parameters": {}
+},
+"path": "/aspnet-web-simple",
+"problems": [],
+"mixins": [
+"git"
+]
+}],
+"name": "codeenvy",
+"links": []
+}

@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100&family=Poppins:wght@200;300;400;500&display=swap');
+@import "core/mixin";
+@import "core/variable";
+// @import "core/login";
+@import "core/questionbank";
+@import "core/header";
+@import "core/quiz";
+@import "core/home";
+@import "core/wizard";
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: left;
+    background-color: $white;
+    color: $black;
+}
+
+
+body.login_page {
+    background: #dfe9f5;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  body.login_page .wrapper {
+    width: 330px;
+    padding: 2rem 0 2rem 0;
+    margin: 50px auto;
+    background: #ffffff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+  body.login_page h1 {
+    font-size: 2rem;
+    color: #1B1B1B;
+  }
+  body.login_page p {
+    margin-bottom: 1.7rem;
+  }
+  body.login_page form input {
+    width: 85%;
+    outline: none;
+    border: none;
+    background: #dfe9f5;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+  }
+  body.login_page button {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    padding: 8px 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    width: 85%;
+    background: #4782BC;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  body.login_page button:hover {
+    background: #5695d3;
+  }
+
+
+
+
+
+
+@import "core/responsive";

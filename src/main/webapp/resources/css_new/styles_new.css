@@ -1,0 +1,1053 @@
+body, div, form, ul, li, a, span, label, p, h1, h2, h3, h4, h5, h6, table, tr, td, th, header, section, article, footer, aside, caption, code, pre, button, a {
+    position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 100;
+}
+
+a, a:hover, a:active, a:focus {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+input[type="text"], input[type="email"] {
+    width: 100%;
+    border: none;
+    padding: 7px 10px;
+    background-color: white;
+    color: #636363;
+    border-radius: 3px;
+}
+
+textarea {
+    width: 100%;
+    background-color: #f3f3f3;
+    border: none;
+    color: #000;
+    border-radius: 3px;
+}
+
+.col-red {
+    color: red;
+}
+
+.col-orange {
+    color: orange;
+}
+
+.btn {
+    border: none;
+    padding: 10px 25px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.btn:after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    width: 0px;
+    height: 100px;
+    left: 50%;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: all 300ms ease-in-out;
+}
+
+.btn:hover:after {
+    width: 500px;
+    left: -40px;
+}
+
+.btn-primary {
+    background-color: #1294f4;
+    border-bottom: 3px solid #2172af;
+}
+
+.btn-secondary {
+    background-color: #585858;
+    border-bottom: 3px solid #373737;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    color: #636363;
+}
+
+body.pre-login, body.post-login>form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    min-height: 100vh;
+    grid-template-areas: "header" "content" "footer";
+}
+
+body.pre-login {
+    grid-template-rows: 1fr auto auto;
+}
+
+body.post-login>form {
+    grid-template-rows: auto 1fr auto;
+}
+
+body.pre-login header {
+    grid-area: header;
+    min-height: 100vh;
+    color: #fff;
+}
+
+body.pre-login header .contact-us {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    color: #fff;
+}
+
+body.pre-login header .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 10px;
+}
+
+body.pre-login header .container h1 {
+    font-size: 1.9rem;
+}
+
+body.pre-login header .container h1 img {
+    display: block;
+    margin: 0 auto;
+}
+
+body.pre-login header .container h1 span {
+    color: #007bfe;
+}
+
+body.pre-login header .container h2 {
+    font-size: 1.6rem;
+}
+
+body.pre-login header .container .user-details ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+body.pre-login header .container .user-details ul li {
+    margin-bottom: 15px;
+}
+
+body.pre-login header .container .user-details ul li label {
+    margin-bottom: 2px;
+}
+
+body.pre-login header .container .user-details button {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+body.pre-login header .container .start-test form ul {
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+body.pre-login header .container .start-test form ul li {
+    text-align: center;
+}
+
+body.pre-login header .container .start-test form .user-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+body.pre-login header .container .start-test form .user-actions .warning-msg {
+    margin: 0 auto;
+}
+
+body.pre-login header .container .start-test form .user-actions>div {
+    padding: 5px;
+}
+
+body.pre-login header .container .start-test form .warning-msg span {
+    width: 80%;
+    display: block;
+    margin-left: 50px;
+}
+
+body.pre-login header .container .start-test form .warning-msg i {
+    position: absolute;
+    top: 50%;
+    font-size: 2.4rem;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+body.pre-login header .container .start-test form button {
+    width: 100%;
+}
+
+body.post-login header {
+    /* TEMP style */
+    background-color: #000;
+    grid-area: header;
+    color: #fff;
+}
+
+body.post-login header h1 {
+    font-size: 1.7rem;
+    color: #fff;
+}
+
+body.post-login header h1 .company {
+    font-size: 0.9rem;
+}
+
+body.post-login header h1 .company:before {
+    content: "-";
+}
+
+body.post-login header .timing {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+body.post-login header .timing input {
+    border: 1px solid #fff;
+    background: transparent;
+    display: inline-block;
+    width: 50px;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+body.post-login header .timing span {
+    margin-right: 5px;
+    white-space: nowrap;
+}
+
+body.pre-login>section, body.post-login form section {
+    grid-area: content;
+}
+
+body.pre-login>section .container h3 {
+    text-transform: uppercase;
+    color: #2172af;
+}
+
+body.pre-login>section .container ul li ul {
+    list-style: disc;
+    margin-left: 18px;
+}
+
+body.post-login form section .section-lists {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+body.post-login form section .section-lists li {
+    margin-bottom: 2px;
+}
+
+body.post-login form section .section-lists li a {
+    display: block;
+    padding: 7px 15px;
+    background-color: #f3f3f3;
+}
+
+body.post-login form section .main-content {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+body.post-login form section .question {
+    color: #2172af;
+}
+
+body.post-login form section .question span:first-child {
+    display: inline-block;
+    text-align: center;
+    background-color: #f3f3f3;
+    padding: 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 20px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+body.post-login form section .question div {
+    margin-left: 50px;
+}
+
+body.post-login form section .coding .headings {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+body.post-login form section .coding .code-run button {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+body.post-login form section .coding textarea {
+    height: 100px;
+    overflow-y: auto;
+}
+
+pre.ace_editor.ace_hidpi.ace-tomorrow-night-blue.ace_dark {
+    min-height: 100px !important;
+}
+
+body.post-login form section .coding textarea.input {
+    height: auto;
+}
+
+body.post-login form section .fill-blanks .fill-up input {
+    background-color: #f3f3f3;
+}
+
+body.post-login form section .match-following {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+body.post-login form section .match-following ul:first-child {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+body.post-login form section .match-following ul li {
+    background-color: #f3f3f3;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    padding: 10px;
+    color: #000;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+body.post-login form section .match-following ul li#q1 {
+    background-color: red;
+}
+
+body.post-login form section .match-following ul li#q2 {
+    background-color: green;
+}
+
+body.post-login form section .match-following ul li#q3 {
+    background-color: blue;
+}
+
+body.post-login form section .match-following ul li#q4 {
+    background-color: pink;
+}
+
+body.post-login form section .match-following ul li#q5 {
+    background-color: #eb1587;
+}
+
+body.post-login form section .match-following ul li#q6 {
+    background-color: #bafc35;
+}
+
+body.post-login form section .assessment-progress {
+    background-color: #f3f3f3;
+    padding: 10px;
+}
+
+body.post-login form section .descriptions {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    overflow: hidden;
+    transition: all 280ms ease-in-out;
+}
+
+body.post-login form section .descriptions.hidden {
+    width: 37px;
+    height: 38px;
+}
+
+body.post-login form section .descriptions.hidden .description-content {
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body.post-login form section .descriptions .des-toggler {
+    background-color: #afafaf;
+    font-size: 2rem;
+    line-height: 34px;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+body.post-login form section .descriptions .description-content {
+    background-color: #f3f3f3;
+    padding: 40px 10px 10px 10px;
+    transition: all 280ms ease-in-out;
+}
+
+.descriptions .description-content h3, .descriptions .description-content img, .descriptions .description-content p, .descriptions .description-content ul, .descriptions .description-content audio, .descriptions .description-content video {
+    margin-bottom: 20px;
+}
+
+.descriptions .description-content img {
+    width: 100%;
+}
+
+body.post-login form section .descriptions.multifile {
+    position: static;
+}
+
+body.post-login form section .descriptions.multifile .description-content {
+    padding-top: 10px;
+}
+
+body.post-login form section .descriptions.multifile .description-content button {
+    width: 100%;
+}
+
+body footer {
+    grid-area: footer;
+    background-color: #f3f3f3;
+    font-size: 0.9rem;
+    color: #636363;
+}
+
+body footer a {
+    color: #636363;
+}
+
+body footer span {
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+@media only screen and (min-width:768px) {
+    body.pre-login header .container {
+        justify-content: space-evenly;
+    }
+    body.pre-login header .container h1 img {
+        display: inline-block;
+        margin-right: 15px;
+    }
+    body footer span {
+        margin-bottom: 0;
+        float: right;
+    }
+    body.pre-login header .container .start-test form ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border: none;
+    }
+    body.pre-login header .container .start-test form ul li {
+        width: 100%;
+        padding: 5px;
+    }
+    body.pre-login header .container .start-test form ul li:first-child {
+        text-align: right;
+    }
+    body.pre-login header .container .start-test form ul li:last-child {
+        text-align: left;
+    }
+    body.pre-login header .container .start-test form .user-actions .warning-msg span {
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width:1024px) {
+    input[type="text"], input[type="email"] {
+        padding: 10px;
+    }
+    body.pre-login header .container h1 {
+        font-size: 2.3rem;
+    }
+    body.pre-login header .container h2 {
+        font-size: 1.9rem;
+    }
+    body.pre-login header .container .user-details ul {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    body.pre-login header .container .user-details ul li {
+        width: 32%;
+        margin-bottom: 0;
+    }
+    body.pre-login header .container .user-details ul li label {
+        margin-bottom: 0;
+        position: absolute;
+        color: #626262;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: all 280ms ease-in-out;
+    }
+    body.pre-login header .container .user-details ul li label.active {
+        left: 0;
+        top: -10px;
+        color: #fff;
+    }
+    body.pre-login header .container .user-details button {
+        width: auto;
+    }
+    body.pre-login header .container .start-test form .user-actions {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    body.pre-login header .container .start-test form .user-actions .warning-msg {
+        width: 47%;
+        margin: unset;
+    }
+    body.pre-login header .container .start-test form .user-actions .warning-msg i {
+        position: static;
+        top: unset;
+        transform: unset;
+    }
+    body.pre-login header .container .start-test form .user-actions .warning-msg span {
+        margin-left: 0;
+        display: inline;
+        position: absolute;
+        top: 10px;
+        left: 50px;
+    }
+    body.post-login header .container-fluid {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    body.post-login header .container-fluid h1 {
+        margin-right: 20px;
+    }
+    body.post-login header .container-fluid .timing {
+        width: 20%;
+        text-align: right;
+        flex-direction: column;
+    }
+    body.post-login header .container-fluid .timing span {
+        margin-right: 0;
+    }
+    body.pre-login>section .container>ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    body.pre-login>section .container>ul li {
+        width: 100%;
+    }
+    body.post-login form section .section-lists {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 280px;
+    }
+    body.post-login form section .main-content, body.post-login form section .descriptions.multifile {
+        margin-top: 0;
+        margin-left: 290px;
+        width: calc(100% - 320px);
+    }
+    body.post-login form section .coding .code-run button {
+        width: auto;
+        margin-bottom: 0;
+    }
+    body.post-login form section .match-following {
+        flex-direction: row;
+    }
+    body.post-login form section .match-following ul {
+        width: 100%;
+    }
+    body.post-login form section .match-following ul:first-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        margin-right: 10px;
+        border-bottom: none;
+    }
+    body.post-login form section .descriptions {
+        width: calc(100% - 300px);
+    }
+}
+
+@media only screen and (min-width:1200px) {
+    body.post-login form section .main-content {
+        margin-top: 0;
+        margin-left: 290px;
+        width: calc(100% - 56%);
+        transition: all 280ms ease-in-out;
+    }
+    body.post-login form section .main-content.expand {
+        width: calc(100% - 320px);
+    }
+    body.post-login form section .descriptions {
+        width: 31%;
+    }
+}
+
+@media only screen and (min-width:1440px) {
+    body.post-login form section .main-content {
+        margin-top: 0;
+        margin-left: 290px;
+        width: calc(100% - 53%);
+        transition: all 280ms ease-in-out;
+    }
+    body.post-login form section .main-content.expand {
+        width: calc(100% - 320px);
+    }
+    body.post-login form section .descriptions {
+        width: 33%;
+    }
+}
+
+/*
+.fill-blanks input[type="text"] {
+    border: 1px solid #ccc;
+}
+
+.col-red {
+    color: red;
+}
+
+.col-orange {
+    color: orange;
+}
+
+.btn {
+    border: none;
+    padding: 10px 25px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.btn:after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    width: 0px;
+    height: 100px;
+    left: 50%;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: all 300ms ease-in-out;
+}
+
+.btn:hover:after {
+    width: 500px;
+    left: -40px;
+}
+
+.btn-primary {
+    background-color: #1294f4;
+    border-bottom: 3px solid #2172af;
+}
+
+.btn-secondary {
+    background-color: #585858;
+    border-bottom: 3px solid #373737;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 100;
+}
+
+body.pre-login, body.post-login form {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    color: #636363;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    grid-template-areas: "header" "content" "footer";
+}
+
+body.pre-login {
+    grid-template-rows: 1fr auto auto;
+}
+
+body.post-login form {
+    grid-template-rows: auto 1fr auto;
+}
+
+body>header body.post-login form header {
+    grid-area: header;
+    background-size: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+body.pre-login>header {
+    height: 100vh;
+    color: white;
+}
+
+body.pre-login>header .contact-us {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    color: white;
+}
+
+body.pre-login>header .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+body.pre-login>header h1 {
+    font-size: 2.9rem;
+    line-height: 5rem;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px black;
+    color: white;
+}
+
+body.pre-login>header h1 span {
+    color: #1295f6;
+}
+
+body.pre-login>header h2 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px black;
+    color: white;
+}
+
+body.pre-login>header h2 .company {
+    font-size: 1rem;
+}
+
+body.pre-login>header h2 .company:before {
+    content: "-";
+}
+
+body.pre-login>header .form label {
+    position: absolute;
+    z-index: 1;
+    color: #636363;
+    left: 30px;
+    top: 10px;
+    transition: all 200ms ease-in-out;
+}
+
+body.pre-login>header .form label.active {
+    font-size: 0.7rem;
+    top: -18px;
+    color: #1294f6;
+    text-shadow: 0 0 5px black;
+}
+
+body.pre-login>header .warnings i {
+    position: relative;
+    top: 5px;
+}
+
+body.post-login header h1 {
+    font-size: 1.8rem;
+    color: white;
+}
+
+body.post-login header h1 .company {
+    font-size: 1rem;
+}
+
+body.post-login header h1 .company:before {
+    content: "-";
+}
+
+body.post-login header .session-timer .logout {
+    font-size: 0.8rem;
+    color: white;
+    border: 1px solid white;
+    border-radius: 25px;
+    padding: 5px;
+    text-align: center;
+    display: inline-block;
+}
+
+body.post-login header .session-timer .logout:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #2172af;
+}
+
+body.post-login header .session-timer input {
+    width: 30px;
+    display: inline-block;
+    padding: 5px;
+    font-size: 0.9rem;
+}
+
+body>section, body.post-login form section {
+    grid-area: content;
+}
+
+body.pre-login>section h3 {
+    text-transform: uppercase;
+    color: #2172af;
+    font-size: 1.9rem;
+}
+
+body.pre-login>section ul {
+    list-style: disc;
+    margin: 15px;
+}
+
+body.post-login form section {
+    padding-left: 210px;
+}
+
+body.post-login form section .section-lists {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 205px;
+}
+
+body.post-login form section:after {
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+body.post-login form section .section-lists li {
+    margin-bottom: 2px;
+    font-size: 0.9rem;
+}
+
+body.post-login form section .section-lists li a {
+    background-color: #f3f3f3;
+    display: block;
+    color: #636363;
+    padding: 7px 10px;
+    overflow: hidden;
+    z-index: 0;
+    transition: all 250ms ease-in-out;
+}
+
+body.post-login form section .section-lists li a:after {
+    content: "";
+    width: 210px;
+    height: 55px;
+    position: absolute;
+    left: -201%;
+    top: 0px;
+    z-index: -1;
+    background-color: #52b2fa;
+    transition: all 250ms ease-in-out;
+}
+
+body.post-login form section .section-lists li a:hover {
+    color: white;
+}
+
+body.post-login form section .section-lists li a:hover:after {
+    left: 0;
+}
+
+body.post-login form section .question {
+    font-size: 1.2rem;
+    color: #2172af;
+}
+
+body.post-login form section .question span {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: black;
+    text-align: center;
+    background-color: #f3f3f3;
+    display: inline-block;
+    line-height: 30px;
+    font-size: 0.9rem;
+}
+
+body.post-login form section .session-content {
+    float: left;
+    width: 50%;
+}
+
+body.post-login form section .session-content .code-editor, body.post-login form section .session-content .inputs, body.post-login form section .session-content .output {
+    background-color: #f3f3f3;
+    padding: 10px;
+}
+
+body.post-login form section .descriptions {
+    margin-left: 51%;
+    padding: 10px;
+    background-color: #f3f3f3;
+}
+
+body.post-login form section .descriptions.multifile {
+    margin-left: 0;
+}
+
+body.post-login form section .descriptions h4, body.post-login form section .descriptions p, body.post-login form section .descriptions img, body.post-login form section .descriptions ul, body.post-login form section .descriptions div {
+    margin-bottom: 15px;
+}
+
+body.post-login form section .descriptions img {
+    width: 100%;
+}
+
+body.post-login form section .descriptions .des-toggler {
+    background-color: #dbdbdb;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+}
+
+body.post-login form section .descriptions .des-toggler i {
+    font-size: 2rem;
+    position: relative;
+    top: 3px;
+}
+
+body.post-login form section .assessment-process {
+    background-color: #f3f3f3;
+}
+
+body.post-login form section.test-result {
+    padding: 0;
+}
+
+body.post-login form section.test-result .bg-warning, body.post-login form section.test-result .bg-success, body.post-login form section.test-result .bg-danger {
+    color: white;
+}
+
+body.post-login form section.test-result .test-overview {
+    background-color: #f3f3f3;
+}
+
+body.post-login form section.test-result .test-overview i {
+    position: relative;
+    top: 5px;
+}
+
+.accordion .heading {
+    background-color: #f3f3f3;
+    padding: 10px;
+    cursor: pointer;
+}
+
+body footer {
+    background-color: #f3f3f3;
+    grid-area: footer;
+    font-size: 0.9rem;
+}
+
+body footer a {
+    background-color: #f3f3f3;
+    grid-area: footer;
+    font-size: 0.9rem;
+    color: #636363;
+}
+
+.match-all li {
+    display: block;
+    padding: 7px 10px;
+    color: #000;
+    cursor: pointer;
+    margin-bottom: 10px;
+    background-color: #f3f3f3;
+    text-shadow: 0 0 5px #FFF;
+}
+
+.match-all #q1 {
+    background-color: red;
+}
+
+.match-all #q2 {
+    background-color: green;
+}
+
+.match-all #q3 {
+    background-color: blue;
+}
+
+.match-all #q4 {
+    background-color: pink;
+}
+
+.match-all #q5 {
+    background-color: #eb1587;
+}
+
+.match-all #q6 {
+    background-color: #bafc35;
+}
+
+.modal-bg {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+}
+
+.modal-bg .modal-content {
+    position: absolute;
+    z-index: 110;
+    width: 50%;
+    border-radius: 10px;
+    background-color: white;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-bg .modal-content .modal-header {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.modal-bg .modal-content .modal-header h5 {
+    color: #1294f4;
+    font-size: 2.2rem;
+}
+
+.modal-bg .modal-content .modal-body {
+    padding: 10px;
+}
+
+.modal-bg .modal-content .modal-footer {
+    padding: 10px;
+    border-top: 1ox solid #ccc;
+} */

@@ -1,0 +1,24 @@
+<workbook>
+	<worksheet name="Crawler">
+		<section startRow="0" endRow="0" />
+		<loop startRow="1" endRow="1" items="result" var="ass"
+			varType="com.assessment.data.CrawlerTopic">
+			<section startRow="1" endRow="1">
+				<mapping row="1" col="0">ass.topicName</mapping>
+							
+				<mapping row="1" col="1">ass.qualifier1</mapping>
+				<mapping row="1" col="2">ass.qualifier2</mapping>
+			
+				
+				
+				<mapping row="1" col="3">ass.url</mapping>
+				<mapping row="1" col="4">ass.courseVideoLink</mapping>
+			</section>
+			<loopbreakcondition>
+				<rowcheck offset="0">
+					<cellcheck offset="0">End Rows:</cellcheck>
+				</rowcheck>
+			</loopbreakcondition>
+		</loop>
+	</worksheet>
+</workbook>

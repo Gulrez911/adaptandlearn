@@ -1,0 +1,277 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    min-height: 100%;
+}
+
+a, a:hover, a:active, a:focus {
+    text-decoration: none;
+}
+
+.col-orange {
+    color: orange;
+}
+
+.col-red {
+    color: red !important;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+input[type="text"] {
+    width: 100%;
+    border: none;
+    padding: 10px 15px;
+}
+
+.btn {
+    padding: 8px 20px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    color: white;
+    border: none;
+}
+
+.btn-primary {
+    background-color: #52b2fa;
+    border-bottom: 3px solid #2172af;
+}
+
+.btn-secondary {
+    border-bottom: 3px solid #2f3338;
+}
+
+.btn-primary:hover {
+    background-color: #52b2fa;
+}
+
+.forms div {
+    position: relative;
+}
+
+.forms label {
+    position: absolute;
+    left: 30px;
+    top: 10px;
+    transition: all 150ms ease-out;
+}
+
+.forms label.active {
+    color: #7dc7ff;
+    top: -25px;
+    font-size: 0.9rem;
+}
+
+.pre-login .container-fluid {
+    max-width: 1300px;
+}
+
+.login-section .container-fluid {
+    display: grid;
+    height: 100vh;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+h3 {
+    font-weight: 100;
+    color: #2172af;
+    font-size: 1.5rem;
+}
+
+footer {
+    background-color: #f3f3f3;
+    font-size: 0.7rem;
+    color: gray;
+}
+
+footer a {
+    color: gray;
+}
+
+.login-section {
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #000;
+    height: 100vh;
+    position: relative;
+}
+
+.login-section .contact {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    color: white;
+}
+
+.login-section h1 {
+    font-size: 3rem;
+    color: white;
+    text-shadow: 0 0 25px #000;
+    letter-spacing: 3px;
+}
+
+.login-section h1 span {
+    margin-top: 20px;
+    color: #1292f2;
+    display: block;
+}
+
+.login-section .test-title {
+    color: white;
+    width: 80%;
+    font-size: 1.9rem;
+    font-weight: 200;
+}
+
+.login-section .test-title .company {
+    font-size: 0.9rem;
+}
+
+.login-section .test-title .company:before {
+    content: "-";
+}
+
+.login-section .user-details, .login-section .enter-otp, .login-section .start-test {
+    width: 80%;
+}
+
+.login-section .enter-otp, .login-section .start-test {
+    color: white;
+}
+
+.login-section .enter-otp input {
+    text-align: center;
+}
+
+.login-section .start-test .material-icons {
+    font-size: 2.3rem;
+    position: relative;
+    top: 2px;
+    left: 20px;
+}
+
+.login-section .start-test .warnings {
+    position: relative;
+    top: -10px;
+    left: 30px;
+}
+
+.assessment header {
+    color: white;
+}
+
+.assessment header input {
+    width: 40px;
+    padding: 10px !important;
+    text-align: center;
+}
+
+.assessment header h1 {
+    font-size: 1.9rem;
+}
+
+.assessment header .company:before {
+    content: "-";
+}
+
+.assessment section .container-fluid .col-sm-4, .assessment section .container-fluid .col-sm-4 .col-md-2 {
+    padding-left: 0;
+}
+
+.assessment ul li {
+    margin-bottom: 2px;
+}
+
+.assessment ul.section li a {
+    display: block;
+    padding: 8px 15px;
+    background-color: #f3f3f3;
+    color: #5e5e5e;
+}
+
+.assessment ul.section li a:hover {
+    background-color: #52b2fa;
+    color: white;
+}
+
+.assessment .count {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-color: #e3e3e3;
+    color: #000;
+    display: inline-block;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 3px;
+    font-size: 1rem;
+}
+
+.assessment .question {
+    font-size: 1.4rem;
+    color: #2172af;
+}
+
+.assessment .descriptions-toggle {
+    position: absolute;
+    z-index: 10;
+    background-color: #dbdbdb;
+    color: #000;
+}
+
+.assessment .descriptions-toggle i {
+    width: 40px;
+    height: 40px;
+    display: block;
+    font-size: 2.6rem;
+}
+
+.assessment .descriptions {
+    background-color: #f3f3f3;
+    padding: 10px;
+    color: #5e5e5e;
+}
+
+.assessment .descriptions h4, .assessment .descriptions p, .assessment .descriptions img, .assessment .descriptions {
+    margin-bottom: 20px;
+}
+
+.assessment .descriptions h4 {
+    font-size: 1.2rem;
+}
+
+.assessment .descriptions img {
+    width: 100%;
+}
+
+.assessment-content .code-editor, .assessment-content .input, .assessment-content .code-output {
+    background-color: #f3f3f3;
+}
+
+.assessment-content .code-editor, .assessment-content .code-output {
+    padding: 20px;
+}
+
+.assessment-content .input input {
+    background-color: transparent;
+}
+
+.assessment .assessment-process {
+    position: fixed;
+    z-index: 10;
+    background-color: #f3f3f3;
+    width: 100%;
+    bottom: 0;
+    padding: 10px;
+}

@@ -1,0 +1,199 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+    xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:jee="http://www.springframework.org/schema/jee" 
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="http://www.springframework.org/schema/jdbc
+    http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+    http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+    http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
+    http://www.springframework.org/schema/data/jpa  http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd"
+    default-lazy-init="true" >
+    
+    <task:scheduler id="scheduler" pool-size="2"/>
+
+<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:config.properties" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+	</bean>
+<!-- 	String hostName; -->
+	
+<!-- 	String sendFrom; -->
+	
+<!-- 	String sendFromName; -->
+	
+<!-- 	String sendFromPassword; -->
+	
+<!-- 	String smtpPort; -->
+<bean class="com.assessment.common.PropertyConfig">
+		<property name="baseUrl" value="${baseUrl}"></property>
+		<property name="testLinkHtmlLocation" value="D:/templates/sendTestLink.html"></property>
+		<property name="resultLinkHtmlLocation" value="D:/templates/sendTestResultInfo.html"></property>
+		<property name="sendCredentialsToStudent" value="D:/templates/sendCredentialsToStudent.html"></property>
+		<property name="bookingTestLink" value="D:/templates/sendTestBookingLink.html"></property>
+		<property name="bookingEmailFailureLocation" value="D:/templates/bookingFailures/"></property>
+		
+		<property name="assessmentNameForIT" value="Pyschometric Evaluation for Consultants"></property>
+		<property name="tempCompanyName" value="IIHT"></property>
+		<property name="otpEmailFileLocation" value="D:/templates/bookingOtp.html"></property>
+		
+		<property name="costForAssessment" value="300"></property>
+		<property name="gstCharges" value="54"></property>
+		<property name="gatewayCharge" value="15"></property>
+		<property name="paymentRedirectFileLocation" value="D:/templates/paymentRedirect.html"></property>
+		
+		
+		<property name="hostName" value="${hostName}"></property>
+		<property name="sendFrom" value="${sendFrom}"></property>
+		<property name="sendFromName" value="${sendFromName}"></property>
+		<property name="sendFromPassword" value="${sendFromPwd}"></property>
+		<property name="smtpPort" value="${smtpPort}"></property>
+		<property name="screenShotFolder" value="${screenShotFolder}"></property>
+		<property name="defaultReferenceConfigFileLocation" value="/opt/assessment_tenants/base"></property>
+		<property name="tenantsConfigLocation" value="/opt/assessment_tenants"></property>
+		<property name="tomcatDeployLocation" value="/opt/apache-tomcat-8.5.34/webapps"></property>
+		<property name="remoteBaseUrl" value="https://13.233.2.169/" ></property>
+		<property name="pmdServerBaseUrl" value="http://13.233.2.169/pmd-server-0.0.1-SNAPSHOT/"></property>
+		<property name="testLinkHtml_Generic_Location" value="/opt/tomcat0.8/bin/yaksha/sendTestLink_Generic.html" ></property>
+<!-- 		<property name="fileServerLocation" value="/file-server/assessment/yaksha"></property> -->
+		<property name="fileServerLocation" value="D:/EclipseTomcat/Deploy/Files"></property>
+<!-- 		<property name="fileServerWebUrl" value="http://img.yaksha.online/images/assessment/yaksha/" ></property> -->
+			<property name="fileServerWebUrl" value="https://localhost:8443/file-server/" ></property>
+		<property name="lmsStudentRegistrationTemplate" value="/opt/tomcat0.8/bin/assessment/lms_student_registration.html" ></property>
+		<property name="campaignInviteHtmlLocation" value="D:/templates/sendCampaignLink.html" ></property>
+		<property name="jasperServerBaseUrl" value="https://stg-reporting.yaksha.online:8443/jasperserver/rest_v2/reports/Yaksha/" ></property>
+		<property name="campaignStatusLinkLocation" value="D:/templates/sendCampaignReviewComments.html" ></property>
+		
+ 		<property name="profileBaseLocation" value="E:\fromMainLaptop\apache-tomcat-8.0.3\webapps\file-server\Files" ></property>
+
+		<property name="showParsedResumeDetails" value="true" ></property>
+		
+			<property name="companyName" value="${companyName}"></property>
+	</bean>
+
+
+    <context:component-scan base-package="com.assessment"  />
+    <jpa:repositories base-package="com.assessment.repositories"/>
+
+    <tx:annotation-driven transaction-manager="transactionManager" />
+    
+    
+    
+    
+    <bean id="dataSource" class = "com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="com.mysql.jdbc.Driver" />
+        <!-- Connection Details -->
+
+
+<!--      <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/assessment?characterEncoding=utf8" />   -->
+       <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/assessment_backup?characterEncoding=utf8" />  
+        <property name="user" value="root" /> 
+        <property name="password" value="" />  
+        
+       <!--  <property name="jdbcUrl" value="jdbc:mysql://159.65.148.176:3306/eassessintl?characterEncoding=UTF-8" />
+				<property name="user" value="digital_user" />
+				<property name="password" value="Welcome@123" /> -->
+<!--   <property name="jdbcUrl" value="jdbc:mysql://159.65.148.176:3306/duplicate_eassessintl?characterEncoding=UTF-8" /> -->
+<!-- 	<property name="user" value="duplicate" /> -->
+<!--  	<property name="password" value="Welcome@123" />         -->
+        
+
+
+        <!-- Pooling Details-->
+        <property name="initialPoolSize" value="3" />
+        <property name="minPoolSize" value="6" />
+        <property name="maxPoolSize" value="25" />
+        <property name="acquireIncrement" value="3" />
+        <property name="maxStatements" value="0" />
+
+        <!-- Retries -->
+        <property name="acquireRetryAttempts" value="30" />
+        <property name="acquireRetryDelay" value="1000" /> <!-- 1s -->
+        <property name="breakAfterAcquireFailure" value="false" />
+
+        <!-- Refreshing Connections -->
+        <property name="maxIdleTime" value="180" /> <!-- 3min -->
+        <property name="maxConnectionAge" value="10" /> <!-- 1h -->
+
+        <!-- Timeouts And Testing -->
+        <property name="checkoutTimeout" value="180000" /> <!-- 5s -->
+        <property name="idleConnectionTestPeriod" value="60" /> <!-- 60 -->
+        <property name="testConnectionOnCheckout" value="true" />
+        <property name="preferredTestQuery" value="SELECT 1" />
+        <property name="testConnectionOnCheckin" value="true" />
+    </bean>
+    
+    <bean id="dataSourceRoot" class = "com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="com.mysql.jdbc.Driver" />
+        <!-- Connection Details -->
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/assessment" />  
+        <property name="user" value="root" /> 
+        <property name="password" value="" />
+
+        <!-- Pooling Details-->
+        <property name="initialPoolSize" value="1" />
+        <property name="minPoolSize" value="1" />
+        <property name="maxPoolSize" value="3" />
+        <property name="acquireIncrement" value="2" />
+        <property name="maxStatements" value="0" />
+
+        <!-- Retries -->
+        <property name="acquireRetryAttempts" value="30" />
+        <property name="acquireRetryDelay" value="1000" /> <!-- 1s -->
+        <property name="breakAfterAcquireFailure" value="false" />
+
+        <!-- Refreshing Connections -->
+        <property name="maxIdleTime" value="180" /> <!-- 3min -->
+        <property name="maxConnectionAge" value="10" /> <!-- 1h -->
+
+        <!-- Timeouts And Testing -->
+        <property name="checkoutTimeout" value="5000" /> <!-- 5s -->
+        <property name="idleConnectionTestPeriod" value="60" /> <!-- 60 -->
+        <property name="testConnectionOnCheckout" value="true" />
+        <property name="preferredTestQuery" value="SELECT 1" />
+        <property name="testConnectionOnCheckin" value="true" />
+    </bean>
+	
+	<bean id="entityManagerFactory"
+       class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+       <!--TODO: suppose to work without classpath -->
+       <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
+       <property name="persistenceUnitName" value="V2CRM_PersistenceUnit" />
+       <property name="dataSource" ref="dataSource" />
+		  <property name="jpaVendorAdapter"> 
+		       <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"> 
+		           <!-- <property name="databasePlatform" value="org.hibernate.dialect.DerbyDialect" /> --> 
+		           <!-- <property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" /> -->
+		           <property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+		           <!-- <property name="databasePlatform" value="org.hibernate.dialect.OracleDialect" /> -->
+		           <property name="showSql" value="true" /> 
+		           <property name="generateDdl" value="true" />
+<!-- 		           <property name="generate_statistics" value="true" /> -->
+		           
+		          
+		       </bean> 
+		  </property>
+   </bean>
+   
+   <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+       <property name="entityManagerFactory" ref="entityManagerFactory" />
+       <property name="defaultTimeout" value="1800"></property>
+   </bean>
+
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+</beans>

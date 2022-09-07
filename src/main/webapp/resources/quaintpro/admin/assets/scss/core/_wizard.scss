@@ -1,0 +1,604 @@
+
+section.Test_section{
+    .test_tab_section{
+        .tab_con_box{
+            .Set_your_Test_box {
+                margin-top: 30px;
+                .question_bank_sec.Add_Sections_box{
+                    .question_sec_table {
+                        box-shadow: 0px 0px 10px #E8E8E8;
+                        table.table.table-borderless {
+                            tbody{
+                                tr{
+                                    border-top: 1px solid #ededed;
+                                    td{
+                                        font-weight: 400;
+                                        font-size: 12px;
+                                        line-height: 18px;
+                                        color: #3E3E3E;
+                                        padding: 12px 8px;
+                                        a{
+                                            text-decoration: none;
+                                            color: #8CB7E0;
+                                            cursor: pointer;
+                                        }  
+                                    }
+                                }
+                            }
+                            thead{
+                                tr{
+                                    th{
+                                        background: #F9F9F9;
+                                        padding: 15px 8px;
+                                        font-weight: 400;
+                                        font-size: 14px;
+                                        text-align: center;
+                                        vertical-align: middle;
+                                        line-height: 21px;
+                                        color: #000000;
+                                    
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .present_box {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 20px;
+                    .pre_right {
+                        button.Categories.Clear {
+                            background: #FF6969;
+                        }
+                        button.Categories.Selected {
+                            background: #92F390;
+                        }
+                        button.Categories {
+                            border: none;
+                            color: white;
+                            background: #4782BC;
+                            border-radius: 30px;
+                            padding: 5px 16px;
+                            font-weight: 400;
+                            font-size: 14px;
+                            margin-left: 4px;
+                        }
+                    }
+                    .pre_left {
+                        .question_bank_sec.mb-4 {
+                            .search {
+                                .wrap {
+                                    width: 50%;
+                                    margin: 0px;
+                                }
+                            }
+                        }
+                        p {
+                            margin: 0px;
+                            font-weight: 500;
+                            font-size: 16px;
+                            line-height: 24px;
+                            color: #3E3E3E;
+                        }
+                        .precentage {
+                            background: #FFFFFF;
+                            border: 1px solid #E3E3E3;
+                            border-radius: 10px;
+                            width: 100px;
+                            text-align: center;
+                            margin-top: 10px;
+                            padding: 5px 10px;
+                            p{
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                }
+                .question_bank_sec.Add_Sections_box {
+                    .question_table {
+                        table.table.table-borderless {
+                            tbody {
+                                tr{
+                                    td{
+                                        padding: 18px !important;
+                                        .add_btn {
+                                            button.add {
+                                                background: $tablebuttonbg;
+                                                border-radius: 8px;
+                                                border: none;
+                                                color: $white;
+                                                font-weight: 500;
+                                                font-size: 18px;
+                                                line-height: 27px;
+                                                padding: 4px 15px;
+                                            }
+                                        }
+                                        .Test_Takers {
+                                            display: flex;
+                                            align-items: center;
+                                            .profile_name p {
+                                                color: $black;
+                                                font-weight: 500;
+                                                font-size: 16px;
+                                                margin: 0px;
+                                            }
+                                            .profile_img.profile_bg1{
+                                                background: $condidateboxbg2; 
+                                            }
+                                            .profile_img.profile_bg2{
+                                                background: $boxfirst2; 
+                                            }
+                                            .profile_img.profile_bg3{
+                                                background: $boxfirst1; 
+                                            }
+                                            .profile_img.profile_bg4{
+                                                background: $condidateboxbg2; 
+                                            }
+                                            .profile_img.profile_bg5{
+                                                background: $condidateboxbg2; 
+                                            }
+                                            .profile_img {
+                                                padding: 5px 15px;
+                                                background: $condidateboxbg1;
+                                                -webkit-border-radius: 10px;
+                                                -moz-border-radius: 10px;
+                                                border-radius: 10px;
+                                                margin-right: 15px;
+                                                p {
+                                                    margin: 0px;
+                                                    color: #ffffff;
+                                                }
+                                            }
+                                        }  
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .question_filter.All_Sections {
+                    margin-top: 25px;
+                    background: #FFFFFF;
+                    box-shadow: 0px 0px 10px #e8e8e8;
+                    border-radius: 20px 0px 0px 20px;
+                    padding: 40px 20px;
+                    height: 645px;
+                    overflow: auto;
+                    .question_bank_sec{
+                        .search .wrap {
+                            width: 100%;
+                            margin: 0px auto;
+                        }
+                    }
+                   
+                    .question_type_sec {
+                        margin-top: 0px;
+                        background: $cardbg;
+                        border-radius: 16px;
+                        .flex {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            .question_type_heading {
+                                p {
+                                    margin: 0px;
+                                    color: $white;
+                                    font-size: 16px;
+                                }
+                            }
+                        }
+                    }
+                    .filter_heading.question_sec {
+                      display: flex;
+                      align-items: center;
+                   justify-content: space-between;
+                 margin-bottom: 18px;
+                 h3 {
+                    margin: 0px;
+                }
+                 .add_ques {
+                    a{
+                        img{
+
+                        }
+                    }
+                }
+}
+                    .filter_heading {
+                        h3 {
+                            font-weight: 600;
+                            font-size: 22px;
+                            margin-bottom: 18px;
+                        }
+                    }
+                }
+                .question_bank_sec.Add_Sections_box {
+                    .invite_condidate {
+                        margin-top: 25px;
+                        background: #FFFFFF;
+                        box-shadow: 0px 0px 10px #e8e8e8;
+                        border-radius: 20px 0px 0px 20px;
+                        padding: 25px 20px;
+                        .recent_test.results {
+                            .condidate_table {
+                                .table_scroll {
+                                    table.table.table-borderless.table-sm {
+                                        tbody {
+                                            border: none;
+                                        }
+                                    }
+                                }   
+                            }
+                        }
+                    }
+                    .question_table_sec_box{
+                        width: 100%;
+                        margin: 40px auto 0px;
+                        .Create_New_Question_field {
+                            label.form-label {
+                                font-weight: 400;
+                                font-size: 17px;
+                                line-height: 33px;
+                                color: $black;
+                            }
+                            input{
+                                background: $white;
+                                border: 1px solid $formboderbg;
+                                border-radius: 16px;
+                                height: 55px;
+                                &:focus{
+                                    border-color: #4782BC;
+                                  outline: 0;
+                                    box-shadow: 0 0 0 0rem rgb(13 110 253 / 25%);
+                                }
+                            }
+                        }
+                        .question_table.Send_Invitation {
+                            box-shadow: 0px 0px 8px rgb(193 193 193 / 35%);
+                            border-radius: 16px;
+                            padding: 25px;
+                            .invited_test {
+                                .accordian_section {
+                                    .accordion{
+                                        .accordion-item {
+                                            border: 0px;
+                                            margin-bottom: 12px;
+                                            .accordion-body {
+                                                padding: 1rem 10px;
+                                                .accordian_body_sec{
+                                                    p {
+                                                        margin: 0px;
+                                                        font-size: 14px;
+                                                        line-height: 24px;
+                                                    }
+                                                }
+                                            }
+                                            .accordion-header {
+                                                margin-bottom: 0;
+                                                border: 1px solid #d7d7d7;
+                                                border-radius: 5px;
+                                                .accordion-button{
+                                                    border-radius: 5px;
+                                                    &:focus {
+                                                        z-index: 3;
+                                                        border-color: #86b7fe;
+                                                        outline: 0;
+                                                        box-shadow: 0 0 0 0rem rgb(13 110 253 / 25%);
+                                                    }
+                                                }
+                                                .accordion-button:not(.collapsed) {
+                                                    color: #0c63e4;
+                                                    background-color: #e7f1ff;
+                                                    box-shadow: inset 0 -0px 0 rgb(0 0 0 / 13%);
+                                                    border-radius: 5px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
+                    h3 {
+                        font-weight: 600;
+                        font-size: 22px;
+                        margin-bottom: 18px;
+                    }
+                    .ques_box {
+                        background: $white;
+                        border: 1px solid $formboderbg;
+                        @include bd-radius(16px);
+                        padding: 15px;
+                        .Set_your_Test_left_box_field {
+                            .que_card_box{
+                                .Save_Section{
+                                    margin-top: 15px;
+                                    button.save_btn {
+                                        background: $activebg;
+                                        color: $white;
+                                        border: none;
+                                        @include bd-radius(14px);
+                                        padding: 12px 35px;
+                                        font-weight: 500;
+                                        font-size: 18px;
+                                        &:hover{
+                                            background: $loginbtnhover;
+                                        }
+                                    }
+                                }
+                                .que_sec{
+                                    background: $white;
+                                    border: 1px solid $formboderbg;
+                                    @include bd-radius(16px);
+                                    .paragraph {
+                                        padding: 15px;
+                                        p {
+                                            font-weight: 400;
+                                            font-size: 14px;
+                                            line-height: 22px;
+                                            margin: 0px;
+                                        }
+                                    }
+                                    .que_footer {
+                                        background: $cardfooterbg;
+                                        padding: 15px;
+                                        border-radius: 0px 0px 16px 16px;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: space-between;
+                                        .left_sec{
+                                            .flex {
+                                                display: flex;
+                                                align-items: center;
+                                                p{
+                                                    margin-right: 20px;
+                                                }
+                                            }
+                                            p {
+                                                font-weight: 400;
+                                                font-size: 12px;
+                                                margin: 0px;
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
+                            .select_question{
+                                nav{
+                                    ul{
+                                        margin: 0px;
+                                        padding: 0;
+                                        li{
+                                            list-style: none;
+                                            display: inline-block;
+                                            padding-right: 20px;
+                                            margin: 12px 0px 20px;
+                                            a{
+                                                background: $white;
+                                                border: 1px solid $formboderbg;
+                                                @include bd-radius(12px);
+                                                text-decoration: none;
+                                                font-weight: 400;
+                                                font-size: 16px;
+                                                color: $black;
+                                                padding: 10px 25px;
+                                                cursor: pointer;
+                                                &.active{
+                                                    background-color: $activebg;
+                                                    color: #fff;
+                                                    border: 1px solid $activebg;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                               
+                            }
+                            label.form-label {
+                                font-weight: 400;
+                                font-size: 17px;
+                                line-height: 33px;
+                                color: $black;
+                            }
+                            input {
+                                background: $white;
+                                border: 1px solid $formboderbg;
+                                @include bd-radius(16px);
+                                height: 55px;
+                            }
+                        }
+                    }
+                }
+                .question_bank_sec{
+                    .search_box.justify-content-center {
+                        .input_field {
+                            input.text_search {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+
+                .question_save {
+                    button.cancle_btn {
+                        background: $white;
+                        border: 1px solid $activebg;
+                        border-radius: 40px;
+                        padding: 8px 35px;
+                        font-weight: 400;
+                        font-size: 16px;
+                        margin-right: 12px;
+                        &:hover{
+                            background:$loginbtnhover;
+                            color: $white;
+                        }
+                    }
+                    button.save_btn {
+                        background: $activebg;
+                       color: $white;
+                       border: none;
+                       border-radius: 40px;
+    padding: 8px 35px;
+                        font-weight: 400;
+                        font-size: 16px;
+                        &:hover{
+                            background:$loginbtnhover; 
+                        }
+                    }
+                }
+                .Set_your_Test_left_box {
+                    .Set_your_Test_left_box_field1{
+                        .custom_checkbox{
+                            ul{
+                                padding: 0px;
+                                margin: 0px;
+                                list-style-type: none;
+                                li{
+                                    display: inline-block;
+                                    margin-right: 10px;
+                                    .cl-custom-check {
+                                        display: none;
+                                        + .cl-custom-check-label {
+                                            background-color: white;
+                                            border: 1px solid #e2e2e2;
+                                            color: black;
+                                            padding: 5px 10px;
+                                            font-size: 14px;
+                                            font-family: sans-serif;
+                                            cursor: pointer;
+                                            user-select: none;
+                                            border-radius: 7px;
+                                            display: inline-block;
+                                            margin: 0 10px 10px 0;
+                                            backface-visibility: hidden;
+                                            transition: all 0.6s ease;
+                                        }
+                                    
+                                        &:checked {
+                                            + .cl-custom-check-label {
+                                                border: 1px solid $buttonbg;
+                                                background-color: $buttonbg;
+                                                color: white;
+                                                backface-visibility: hidden;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        label.form-label {
+                            font-weight: 400;
+                            font-size: 16px;
+                            line-height: 33px;
+                            color: #1B1B1B;
+                        }
+                        .flex-box1 {
+                            display: inherit;
+                            align-items: center;
+                            .form-check {
+                                line-height: 23px;
+                                width: 32.33%;
+                                display: inline-block;
+                                margin-bottom: 1rem!important;
+                            }
+                        }
+                        .flex-box {
+                            display: flex;
+                            align-items: center;
+                            .form-check {
+                                margin-right: 22px;
+                                line-height: 23px;
+                            }
+                        }
+                    }
+                    .Set_your_Test_left_box_field {
+                        .form-control:focus {
+                            // border-color: $activebg;
+                            outline: 0;
+                            box-shadow: 0 0 0 0rem rgb(13 110 253 / 25%);
+                        }
+                        .form-select:focus {
+                            // border-color: $activebg;
+                            outline: 0;
+                            box-shadow: 0 0 0 0rem rgb(13 110 253 / 25%);
+                        }
+                      input {
+                            background: $white;
+                            border: 1px solid $formboderbg;
+                            @include bd-radius(16px);
+                            height: 55px;
+                        }
+
+                        textarea {
+                            border: 1px solid $formboderbg; 
+                            @include bd-radius(16px);
+                            height: 167px;
+                            resize: none;
+                        }
+                        select.form-select {
+                            border: 1px solid $formboderbg;
+                            @include bd-radius(16px);
+                            height: 55px;
+                        }
+                        p {
+                            margin: 0px;
+                        }
+                       label.form-label {
+                        font-weight: 400;
+                        font-size: 16px;
+                        line-height: 33px;
+                        color: $black;
+                        }
+                        .d-flex {
+                            select {
+                                margin-right: 19px;
+                                border: none;
+                                background: #ededed;
+                                border-radius: 12px;
+                                width: 128px;
+                                padding: 7px;
+                                font-size: 15px;
+                            }
+                        }
+                       
+                    }
+                }
+            }
+        }
+        ul.nav{
+          justify-content: space-between;
+          background: #5F8CB9;
+          border-radius: 70px;
+          padding: 10px 45px;
+          li{
+              width: 25%;
+            .nav-link.active{
+                background: none;
+                color: $white;
+            }
+            button {
+                color: $tabdisactivecolor;
+                font-weight: 500;
+                font-size: 17px;
+                width: 100%;
+                .flex {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    .left_box i {
+                        font-size: 24px;
+                    }
+                    .right_box i {
+                        font-size: 22px;
+                    }
+                }
+            }
+          }
+        }
+    }
+}

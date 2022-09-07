@@ -1,0 +1,93 @@
+{
+  "metadata": {
+    "name": "${APP_USER}"
+  },
+  "projects": [
+    {
+      "name": "${APP_USER}",
+      "source": {
+        "location": "https://github.com/gothinkster/angular-realworld-example-app",
+        "type": "git"
+      }
+    }
+  ],
+  "components": [
+    {
+      "id": "che-incubator/typescript/latest",
+      "type": "chePlugin"
+    },
+    {
+      "mountSources": true,
+      "endpoints": [
+        {
+          "name": "angular",
+          "port": 4200
+        }
+      ],
+      "memoryLimit": "1Gi",
+      "type": "dockerimage",
+      "image": "quay.io/eclipse/che-nodejs10-community:7.13.1",
+      "alias": "nodejs"
+    },
+    {
+      "mountSources": true,
+       "memoryLimit": "200Mi",
+      "type": "dockerimage",
+      "volumes": [
+        {
+          "name": "chrome",
+          "containerPath": "/home/user"
+        }
+      ],
+      "alias": "chrome",
+      "image": "browserless/chrome"
+    }
+  ],
+  "apiVersion": "1.0.0",
+  "commands": [
+    {
+      "name": "yarn install",
+      "actions": [
+        {
+          "workdir": "${CHE_PROJECTS_ROOT}/${APP_USER}",
+          "type": "exec",
+          "command": "yarn install",
+          "component": "nodejs"
+        }
+      ]
+    },
+    {
+      "name": "build",
+      "actions": [
+        {
+          "workdir": "${CHE_PROJECTS_ROOT}/${APP_USER}",
+          "type": "exec",
+          "command": "yarn run build",
+          "component": "nodejs"
+        }
+      ]
+    },
+    {
+      "name": "start",
+      "actions": [
+        {
+          "workdir": "${CHE_PROJECTS_ROOT}/${APP_USER}",
+          "type": "exec",
+          "command": "yarn run start --host 0.0.0.0 --disableHostCheck true",
+          "component": "nodejs"
+        }
+      ]
+    },
+    {
+      "name": "lint",
+      "actions": [
+        {
+          "workdir": "${CHE_PROJECTS_ROOT}/${APP_USER}",
+          "type": "exec",
+          "command": "yarn run lint",
+          "component": "nodejs"
+        }
+      ]
+    }
+  ]
+}

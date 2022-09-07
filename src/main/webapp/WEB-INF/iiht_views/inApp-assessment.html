@@ -1,0 +1,1568 @@
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page session="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.assessment.data.*, java.text.*, java.util.*,com.assessment.web.dto.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Yaksha Assessment Platform Powered by IIHT</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="css_new/bootstrap.min.css">
+	<link rel="stylesheet" href="css_new/styles_new.css">
+	<link href="css/responsive.css" rel="stylesheet" type="text/css">
+	<link href="css/font-awesome_new.css" rel="stylesheet" type="text/css">
+	<link href="css/responsive_new.css" rel="stylesheet" type="text/css">
+	<link href="css_new/pnotify.custom.min.css" rel="stylesheet" type="text/css">
+		
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/custom.js"></script>
+	<script type="text/javascript" src="scripts/pnotify.custom.min.js"></script>
+	<script type="text/javascript" src="scripts/pnotify.nonblock.js"></script>
+	<script type="text/javascript" src="scripts/pnotify.buttons.js"></script>
+	<script src="scripts/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>		
+	<script type="text/javascript">
+		// PNotify.prototype.options.styling = "fontawesome";
+		var correctNumberOfChoices = ('${currentQuestion.questionMapperInstance.questionMapper.question.rightChoices}'.match(/-/g) || []).length  + 1;		var active = 'true';
+		var studentNameTaken = localStorage.getItem('${studentTestForm.firstName}${studentTestForm.lastName}');
+		var testNameTaken = localStorage.getItem('testName-${studentTestForm.firstName}${studentTestForm.lastName}');
+		var tc= localStorage.getItem('timeCounter-${studentTestForm.firstName}${studentTestForm.lastName}');
+		var firsttime = '${firstpage}';
+
+		// console.log('firsttime '+firsttime);
+			if(firsttime != null && firsttime == 'yes'){
+				console.log('timeCounter getting');	
+				timeCounter = ${timeCounter};
+			} else {
+				if(studentNameTaken == 'yes' && testNameTaken == '${studentTestForm.firstName}${studentTestForm.lastName}-${studentTestForm.testName}'  && tc != null){
+				timeCounter=tc;
+				}
+				else{
+					timeCounter = 0;
+				}
+				
+				if(tc == null){
+					timeCounter= 0;
+				}
+			
+			}
+			
+			/***/
+		
+		
+			if(timeCounter == null){
+				timeCounter = 0;
+			}
+		console.log('timeCounter getting '+timeCounter);	
+		console.log('timeCounter is '+timeCounter);
+			
+		function setTimeOnLoad(){
+		timeProcess();
+		}	
+		
+		function timeProcess(){
+		if(timeCounter == null){
+				timeCounter = 0;
+		}
+		timeCounter = parseInt(timeCounter) + 1;
+		var end = new Date();
+		var hours =  (${studentTestForm.duration}/60) % 60;
+		var minutes = (${studentTestForm.duration}) % 60;
+		var seconds = (${studentTestForm.duration} * 60) % 60;
+		
+		end.setMinutes(minutes);
+		end.setHours(hours);
+		end.setSeconds(seconds);
+		
+		var start = new Date();
+		start.setMinutes((timeCounter/60) % 60);
+		start.setHours((timeCounter/(60*60)) % 60);
+		start.setSeconds(timeCounter % 60);
+		
+		var t = Date.parse(end) - Date.parse(start);
+		seconds = Math.floor( (t/1000) % 60 );
+		minutes = Math.floor( (t/1000/60) % 60 );
+		hours = Math.floor( (t/(1000*60*60)) % 24 );
+		
+		 if (hours   < 10) {hours   = "0"+hours;}
+		 
+		  if (minutes < 10) {minutes = "0"+minutes;}
+		  
+		   if (seconds < 10) {seconds = "0"+seconds;}
+		
+		//document.getElementById("examTimer").innerHTML = hours+":"+minutes+":"+seconds;
+		document.getElementById("hours").value = hours;
+		document.getElementById("min").value = minutes;
+		document.getElementById("sec").value = seconds;
+
+		}
+		 	
+		var submitTest = 'false';
+		
+		function examTimer(){
+			/**
+			send notiication 10 mins before test
+			**/
+			sendNotification10MinBeforeTime();
+			/**
+			End 
+			**/
+			
+			if(submitTest == 'true'){
+				return;
+			}
+			timeProcess();
+		
+			if((${studentTestForm.duration} * 60) - timeCounter <= 3 ){
+				notify('Info', 'Test Time exceeding shortly! Your test will be auto submitted. DO NOT REFRESH THE PAGE.');
+			}		
+				
+			if( timeCounter >= (${studentTestForm.duration} * 60)  ){
+			submitTest();
+			}
+		}
+		
+		var notificationsend = false;
+		
+		function sendNotification10MinBeforeTime(){
+			//if(!notificationsend){
+				var time = localStorage.getItem('not10min-${studentTestForm.emailId}-${studentTestForm.testName}');
+				var diffInMinutes = null;
+				if(time != null){
+					var d1 = new Date();
+					var n1 = d1.valueOf();
+					diffInMinutes = Math.floor( (n1 - time) / 60000);
+				}
+				
+				
+				if((${studentTestForm.duration} * 60) - timeCounter <= 600 ){
+					console.log('trying to notify 10 minutes before diffInMinutes is '+diffInMinutes);
+					if(diffInMinutes == null || diffInMinutes >= 3){
+						console.log('notify 10 minutes before');
+					var d = new Date();
+					var n = d.valueOf();
+					localStorage.setItem('not10min-${studentTestForm.emailId}-${studentTestForm.testName}', n);
+				
+					tme = (${studentTestForm.duration} * 60) - timeCounter;
+					mnts =(tme/60) % 60;
+					notify('Info', 'You have about '+Math.round(mnts)+' minutes to complete the test');
+					notificationsend = true;
+						
+					}
+					
+				}
+			//}
+			
+		}
+		
+		
+		function updateTimeInBackEnd(){
+			<%
+			Test test = (Test) request.getSession().getAttribute("test");
+			%>
+			var testid = '<%= test.getId() %>';
+			var cid = '${studentTestForm.companyId}';
+			var emailid = '${studentTestForm.emailId}';
+			 var url = "timecounterUpdate?timecounter="+timeCounter+"&testId="+testid+"&email="+emailid+"&companyId="+cid;
+			console.log('here url '+url);
+			$.ajax({
+				url : url,
+				type: "POST",
+				success : function(data) {
+				console.log(' updateTimeInBackEnd ret '+data);
+					
+				},
+				error : function(e) {
+					console.log("ERROR: ", e);
+					
+				}
+			});
+		}
+			
+		function takeScreenShot(){
+			 if(active == 'false'){
+				//noncompCount ++;
+				
+				<!--notify('Info', 'The exam window looks to be in the background. This is a non-compliance. We are recording it in our system. If non-'+ -->
+
+	<!-- 'compliances count exceeds 3, this test will auto-submit. Please beware! '); -->
+	notify('Info', 'The exam window appears to be in the background. This is a non-compliance. We are recording it in our system and this might impact your score.');
+				var datasend="user=${studentTestForm.emailId}\ntestName=${studentTestForm.testName}\ncompanyId=${studentTestForm.companyId}";
+				$.ajax({
+				    type: "POST",
+				    url: "registerNonCompliance",
+				    data: { 
+					data:datasend
+				    }
+				}).done(function(fileName) {
+					//alert("done");
+
+				}); 
+				
+				
+				//submitTest();
+				//$.ajax({
+				//    type: "POST",
+				//    url: "getNonComplianceCount",
+				//    data: { 
+				//	data:datasend
+				//    }
+				//}).done(function(data) {
+					//alert("done");
+				//	console.log('no of non-compliances '+data);
+						//if(data > 2){
+						//	console.log('submiting because of many non-compliances');
+						//	submitTest();
+							
+						//}
+					
+				//}); 
+				
+				
+			}
+			else if(active == 'true'){
+				/* this.window.focus();
+				 html2canvas(document.querySelector("#screenShotId"), {
+				logging: true,
+				allowTaint: true
+			    }).then(function(canvas) {
+				var dataImage = canvas.toDataURL("image/png");
+				var testname = encodeURIComponent('${studentTestForm.testName}');
+				$.ajax({
+				    type: "POST",
+				    url: "uploadScreenSnapShot?testName="+testname,
+				    data: { 
+					data:dataImage
+				    }
+				}).done(function(fileName) {
+					alert("done");
+
+				}); 
+			    }); */
+			} 
+		
+		
+		}
+		
+		function activeScreen(){
+		active = 'true';
+		//alert(' active ' +active);
+		}
+		
+		function passiveScreen(){
+		active = 'false';
+		//alert(' passicve ' +active);
+		}
+		
+		
+		window.addEventListener('focus', activeScreen);
+		window.addEventListener('blur', passiveScreen);
+
+		
+		var myVar = setInterval(examTimer, 1000);
+		//var myVar2 = setInterval(takeScreenShot, 5000);
+		
+		var myVar3 = setInterval(updateTimeInBackEnd, 45000);
+		
+	</script>
+</head>
+    <body id="bodyid" class="post-login" onload="setTimeOnLoad();">
+        <div class="master-container">
+            <header class="assessment">
+                <div class="container-fluid">
+                    <a href="#" class="yaksha-logo">
+                        YAK<span>SHA</span>
+                    </a>
+                </div>
+                <div class="subheader">
+                    <div class="container-fluid">
+                        <h1 class="my-auto">
+                            Artificial Intelligence Test Name
+                        </h1>
+                        <div class="quick-actions my-auto">
+                            <span class="my-auto mr-2">Time Remaining</span>
+                            <span class="times">
+                                12
+                            </span>
+                            <span class="times">
+                                59
+                            </span><span class="times">
+                                59
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <section class="content-section">
+                <div class="container-fluid">
+                    <div class="test-page">
+                        <div class="main-section">
+                            <ul class="sections">
+                                <li>
+                                    <a href="#" class="active">
+                                        Section 1 <small class="ml-2">(123)</small>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Section 2 <small class="ml-2">(123)</small>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Section 3 <small class="ml-2">(123)</small>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Section 4 <small class="ml-2">(123)</small>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Section 5 <small class="ml-2">(123)</small>
+                                    </a>
+                                </li>
+                            </ul>
+                        <!--    <div class="mcq d-none"> -->
+						  <div class="mcq">
+                                <div class="question mb-3">
+                                    <div class="thumbnail mr-2">
+                                        <span>01</span>
+                                    </div>
+                                    <div class="question-title">
+                                        <p class="mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, soluta nam asperiores eaque repudiandae itaque voluptates. Quibusdam provident voluptatum, rerum possimus veritatis exercitationem modi consequatur id tenetur, quas non accusamus?</p>
+                                        <img src="images/fullstack.jpeg" width="320" alt="" class="mb-3">
+                                        <div class="thumbnail">
+                                            <span>
+                                                <i class="fa fa-play-circle"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="answers">
+                                    <li class="mb-3">
+                                        <div class="checkbox my-auto mr-3">
+                                            <input type="radio" name="" id=""> <!-- radio --->
+                                        </div>
+                                        <p class="my-auto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae voluptatem esse id, tenetur dicta reprehenderit, quo omnis saepe dolore nisi sunt, illum laboriosam quos? Saepe nulla porro mollitia illum maxime.</p>
+                                    </li>
+                                    <li class="mb-3">
+                                        <div class="checkbox my-auto mr-3">
+                                            <input type="radio" name="" id="">
+                                        </div>
+                                        <p class="my-auto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae voluptatem esse id, tenetur dicta reprehenderit, quo omnis saepe dolore nisi sunt, illum laboriosam quos? Saepe nulla porro mollitia illum maxime.</p>
+                                    </li>
+                                    <li class="mb-3">
+                                        <div class="checkbox my-auto mr-3">
+                                            <input type="radio" name="" id="">
+                                        </div>
+                                        <p class="my-auto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae voluptatem esse id, tenetur dicta reprehenderit, quo omnis saepe dolore nisi sunt, illum laboriosam quos? Saepe nulla porro mollitia illum maxime.</p>
+                                    </li>
+                                    <li class="mb-3">
+                                        <div class="checkbox my-auto mr-3">
+                                            <input type="radio" name="" id="">
+                                        </div>
+                                        <p class="my-auto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae voluptatem esse id, tenetur dicta reprehenderit, quo omnis saepe dolore nisi sunt, illum laboriosam quos? Saepe nulla porro mollitia illum maxime.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="coding">
+                                <div class="question mb-5">
+                                    <div class="thumbnail mr-2">
+                                        <span>01</span>
+                                    </div>
+                                    <div class="question-title">
+                                        <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, soluta nam asperiores eaque repudiandae itaque voluptates. Quibusdam provident voluptatum, rerum possimus veritatis exercitationem modi consequatur id tenetur, quas non accusamus?</p>
+                                        <div class="question-description">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                  <span class="input-group-text" id="basic-addon1">INPUT</span>
+                                                </div>
+                                                <input type="text" disabled class="form-control" value="1, 2, 3, 4, 5, 6...">
+                                            </div>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                  <span class="input-group-text" id="basic-addon1">OUTPUT</span>
+                                                </div>
+                                                <input type="text" disabled class="form-control" value="One, Two, Three, Four, Five, Six...">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="answer">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="">Code</label>
+                                                <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 text-right mb-3">
+                                            <button class="btn btn-primary mr-2" type="button">Run System Test Case</button>
+                                            <button class="btn btn-primary" type="button">Run Code</button>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="">Input</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="">Code</label>
+                                                <textarea name="" id="" cols="30" rows="5" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="test-navigation">
+                                <button class="btn btn-outline-secondary" type="button">
+                                    PREV
+                                </button>
+                                <div class="my-auto">
+                                    12 / 25
+                                </div>
+                                <div>
+                                    <button class="btn btn-primary" type="button">
+                                        NEXT
+                                    </button>
+                                    <button class="btn btn-secondary" type="button">
+                                        SKIP
+                                    </button>
+                                    <button class="btn btn-primary d-none" type="button">
+                                        SUBMIT
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quick-info">
+                            <a href="#">Review Instructions</a>
+                            <div class="test-stats mt-4">
+                                <h3 class="mb-3">Questions <small>(25)</small></h3>
+                                <ul class="questionbookmark">
+                                    <li>
+                                        <a href="#" class="skipped">
+                                            01
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="completed">
+                                            02
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="active">
+                                            03
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            04
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            05
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            06
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            07
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            08
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            09
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            04
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            05
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            06
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            07
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            08
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            09
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            04
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            05
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            06
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            07
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            08
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            09
+                                        </a>
+                                    </li>
+                                </ul>
+                                <h3 class="mt-4 mb-3">Test Stats</h3>
+                                <div class="stats">
+                                    <div class="completed">
+                                        123
+                                    </div>
+                                    <div class="my-auto ml-3">Answered</div>
+                                </div>
+                                <div class="stats mt-3">
+                                    <div class="skipped">
+                                        123
+                                    </div>
+                                    <div class="my-auto ml-3">Skipped</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <footer>
+                <div class="container-fluid text-right">
+                    <span class="copyright">
+                        &copy; Copyright 2020-2021 - Yaksha
+                    </span>
+                    <a href="#">
+                        Terms and Conditions
+                    </a>
+                    <a href="#">
+                        Privacy Policy
+                    </a>
+                </div>
+            </footer>
+        </div>
+		
+		<script>
+	var randomNumber = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+	$('header').attr('style', "background-image: url(images_new/banner_" + randomNumber + ".jpg);");
+
+	$('.des-toggler').on('click', function () {
+		var parent = $(this).closest('.descriptions');
+		if(parent.hasClass('hidden')) {
+			parent.removeClass('hidden');
+			$('.main-content').removeClass('expand');
+		} else {
+			parent.addClass('hidden');
+			$('.main-content').addClass('expand');
+		}
+		
+		// var $this = $(this),
+		// 	attr = $this.closest('.descriptions').attr('style');
+
+		// if (typeof attr !== typeof undefined && attr !== false) {
+		// 	$this.find('i').html('keyboard_arrow_right');
+		// 	$this.closest('.descriptions').find('.des-content').show();
+		// 	$this.closest('.descriptions').removeAttr('style');
+		// 	$this.removeAttr('style');
+		// 	$('.session-content').removeAttr('style');
+		// } else {
+		// 	$this.find('i').html('keyboard_arrow_left');
+		// 	$this.closest('.descriptions').find('.des-content').hide();
+		// 	$this.closest('.descriptions').attr('style', 'width:0px; margin-left:100%; padding: 0');
+		// 	$this.attr('style', 'left: -40px');
+		// 	$('.session-content').attr('style', 'width: 95%');
+		// }
+	});
+
+	var editor = ace.edit("editor");
+	editor.setTheme("ace/theme/tomorrow_night_blue");
+	//editor.setTheme("ace/theme/mono_industrial");
+	
+	var language = '${currentQuestion.questionMapperInstance.questionMapper.question.language.language}';
+	if(language == 'JAVA'){
+		editor.session.setMode("ace/mode/java");
+	}
+	else if(language == 'C'){
+		editor.session.setMode("ace/mode/c_cpp");
+	}
+	else if(language == 'C++'){
+		editor.session.setMode("ace/mode/c_cpp");
+	}
+	else if(language == 'C#'){
+		editor.session.setMode("ace/mode/csharp");
+	}
+	else if(language == 'PYTHON'){
+		editor.session.setMode("ace/mode/python");
+	}
+	else if(language == 'PHP'){
+		editor.session.setMode("ace/mode/php");
+		
+	}
+	else if(language == 'JAVASCRIPT'){
+		editor.session.setMode("ace/mode/javascript");
+	}
+	else if(language == 'CLOJURE'){
+		editor.session.setMode("ace/mode/clojure");
+	}
+	else if(language == 'GO'){
+		editor.session.setMode("ace/mode/golang");
+	}
+	else if(language == 'BASH'){
+		editor.session.setMode("ace/mode/batchfile");
+	}
+	else if(language == 'OBJECTIVE_C'){
+		editor.session.setMode("ace/mode/objectivec");
+	}
+	else if(language == 'MYSQL'){
+		editor.session.setMode("ace/mode/sql");
+	}
+	else if(language == 'PERL'){
+		editor.session.setMode("ace/mode/perl");
+	}
+	else if(language == 'RUST'){
+		editor.session.setMode("ace/mode/rust");
+	}
+	
+	
+	
+	editor.setValue('${currentQuestion.code}');
+	editor.setOptions({
+	enableBasicAutocompletion: true, // the editor completes the statement when you hit Ctrl + Space
+	enableLiveAutocompletion: true, // the editor completes the statement while you are typing
+	showPrintMargin: false, // hides the vertical limiting strip
+	maxLines: Infinity,
+	fontSize: "100%" // ensures that the editor fits in the environment
+});
+
+</script>
+<script>
+	var questionColor = '';
+	$(document).ready(function(){
+		$('.question li').click(function(){
+			questionColor = $(this).css("background-color");
+			$('.question li').removeAttr('style');
+			$(this).css('box-shadow', '0 0 10px 3px rgba(0,0,0,0.4)');
+		});
+		$('.answer li').click(function(){
+			$(".answer li").each(function( i ) {
+				if($(this).css("background-color") == questionColor){
+					$(this).removeAttr('style');
+				}
+			});
+			$(this).css('background-color', questionColor);
+		});
+		
+		var a1 = document.getElementById("a1");
+		console.log(' in load ');
+		if(a1 != null){
+			
+			var col1 = '<c:out value="${currentQuestion.mtf.matchRight1DisplayColour}"/>';
+			console.log(' in load col1 '+col1);
+			if(col1 != null){
+				console.log(' in load col1 set'+col1);
+				a1.style.backgroundColor = col1;
+				console.log(' in load col1 set done'+col1);
+			}
+			
+		}
+		
+		var a2 = document.getElementById("a2");
+		if(a2 != null){
+			var col2 = '<c:out value="${currentQuestion.mtf.matchRight2DisplayColour}"/>';
+			if(col2 != null){
+				a2.style.backgroundColor = col2;
+			}
+			
+		}
+		
+		var a3 = document.getElementById("a3");
+		if(a3 != null){
+			var col3 = '<c:out value="${currentQuestion.mtf.matchRight3DisplayColour}"/>';
+			if(col3 != null){
+				a3.style.backgroundColor = col3;
+			}
+			
+		}
+		
+		var a4 = document.getElementById("a4");
+		if(a4 != null){
+			var col4 = '<c:out value="${currentQuestion.mtf.matchRight4DisplayColour}"/>';
+			if(col4 != null){
+				a4.style.backgroundColor = col4;
+			}
+			
+		}
+		
+		var a5 = document.getElementById("a5");
+		if(a5 != null){
+			var col5 = '<c:out value="${currentQuestion.mtf.matchRight5DisplayColour}"/>';
+			if(col5 != null){
+				a5.style.backgroundColor = col5;
+			}
+			
+		}
+		
+		var a6 = document.getElementById("a6");
+		if(a6 != null){
+			var col6 = '<c:out value="${currentQuestion.mtf.matchRight6DisplayColour}"/>';
+			if(col6 != null){
+				a6.style.backgroundColor = col6;
+			}
+			
+		}
+		
+		
+	});
+	
+	
+	
+
+
+function setMtfValues(qType){
+	if(qType == 'MATCH_FOLLOWING_MCQ'){
+	
+	
+	var cola1 = document.getElementById("a1").style.backgroundColor;
+	var cola2 = document.getElementById("a2").style.backgroundColor;
+	var cola3 = null;
+		if(document.getElementById("a3") != null){
+			cola3 = document.getElementById("a3").style.backgroundColor;
+		}
+	
+	var cola4 = null;
+		if(document.getElementById("a4") != null){
+			cola4 = document.getElementById("a4").style.backgroundColor;
+		}
+		
+	var cola5 = null;
+		if(document.getElementById("a5") != null){
+			cola5 = document.getElementById("a5").style.backgroundColor;
+		}
+	
+	var cola6 = null;
+		if(document.getElementById("a6") != null){
+			cola6 = document.getElementById("a6").style.backgroundColor;
+		}
+		
+		if(cola1 != null && cola1 == "rgb(255, 0, 0)"){
+			document.getElementById("mtf.matchRight1").value = document.getElementById("a1").innerHTML;
+		}
+		else if(cola2 != null && cola2 == "rgb(255, 0, 0)"){
+			document.getElementById("mtf.matchRight1").value = document.getElementById("a2").innerHTML;
+		}
+		else if(cola3 != null && cola3 == "rgb(255, 0, 0)"){
+			document.getElementById("mtf.matchRight1").value = document.getElementById("a3").innerHTML;
+		}
+		else if(cola4 != null && cola4 == "rgb(255, 0, 0)"){
+			var a1val = document.getElementById("a4").innerHTML;
+			document.getElementById("mtf.matchRight1").value = a1val;
+			console.log(' val '+document.getElementById("mtf.matchRight4").value);
+			console.log(' a1 '+a1val);
+		}
+		else if(cola5 != null && cola5 == "rgb(255, 0, 0)"){
+			document.getElementById("mtf.matchRight1").value = document.getElementById("a5").innerHTML;
+		}
+		else if(cola6 != null && cola6 == "rgb(255, 0, 0)"){
+			document.getElementById("mtf.matchRight1").value = document.getElementById("a6").innerHTML;
+		}
+		
+		if(cola1!= null && cola1 == "rgb(0, 128, 0)"){
+			document.getElementById("mtf.matchRight2").value = document.getElementById("a1").innerHTML;
+		}
+		else if(cola2!= null && cola2 == "rgb(0, 128, 0)"){
+			document.getElementById("mtf.matchRight2").value = document.getElementById("a2").innerHTML;
+		}
+		else if(cola3!= null && cola3 == "rgb(0, 128, 0)"){
+			document.getElementById("mtf.matchRight2").value = document.getElementById("a3").innerHTML;
+		}
+		else if(cola4!= null && cola4 == "rgb(0, 128, 0)"){
+			document.getElementById("mtf.matchRight2").value = document.getElementById("a4").innerHTML;
+		}
+		else if(cola5!= null && cola5 == "rgb(0, 128, 0)"){
+			document.getElementById("mtf.matchRight2").value = document.getElementById("a5").innerHTML;
+		}
+		else if(cola6!= null && cola6 == "rgb(0, 128, 0)"){
+			document.getElementById("mtf.matchRight2").value = document.getElementById("a6").innerHTML;
+		}
+		
+		if(cola1 != null && cola1 == "rgb(0, 0, 255)"){
+			document.getElementById("mtf.matchRight3").value = document.getElementById("a1").innerHTML;
+		}
+		else if(cola2 != null && cola2 == "rgb(0, 0, 255)"){
+			document.getElementById("mtf.matchRight3").value = document.getElementById("a2").innerHTML;
+		}
+		else if(cola3 != null && cola3 == "rgb(0, 0, 255)"){
+			document.getElementById("mtf.matchRight3").value = document.getElementById("a3").innerHTML;
+		}
+		else if(cola4 != null && cola4 == "rgb(0, 0, 255)"){
+			document.getElementById("mtf.matchRight3").value = document.getElementById("a4").innerHTML;
+		}
+		else if(cola5 != null && cola5 == "rgb(0, 0, 255)"){
+			document.getElementById("mtf.matchRight3").value = document.getElementById("a5").innerHTML;
+		}
+		else if(cola6 != null && cola6 == "rgb(0, 0, 255)"){
+			document.getElementById("mtf.matchRight3").value = document.getElementById("a6").innerHTML;
+		}
+		
+		if(cola1 != null && cola1 == "rgb(255, 192, 203)"){
+			document.getElementById("mtf.matchRight4").value = document.getElementById("a1").innerHTML;
+		}
+		else if(cola2 != null && cola2 == "rgb(255, 192, 203)"){
+			document.getElementById("mtf.matchRight4").value = document.getElementById("a2").innerHTML;
+		}
+		else if(cola3 != null && cola3 == "rgb(255, 192, 203)"){
+			document.getElementById("mtf.matchRight4").value = document.getElementById("a3").innerHTML;
+		}
+		else if(cola4 != null && cola4 == "rgb(255, 192, 203)"){
+			document.getElementById("mtf.matchRight4").value = document.getElementById("a4").innerHTML;
+		}
+		else if(cola5 != null && cola5 == "rgb(255, 192, 203)"){
+			document.getElementById("mtf.matchRight4").value = document.getElementById("a5").innerHTML;
+		}
+		else if(cola6 != null && cola6 == "rgb(255, 192, 203)"){
+			document.getElementById("mtf.matchRight4").value = document.getElementById("a6").innerHTML;
+		}
+		
+		if(cola1 != null && cola1 == "rgb(235, 21, 135)"){
+			document.getElementById("mtf.matchRight5").value = document.getElementById("a1").innerHTML;
+		}
+		else if(cola2 != null && cola2 == "rgb(235, 21, 135)"){
+			document.getElementById("mtf.matchRight5").value = document.getElementById("a2").innerHTML;
+		}
+		else if(cola3 != null && cola3 == "rgb(235, 21, 135)"){
+			document.getElementById("mtf.matchRight5").value = document.getElementById("a3").innerHTML;
+		}
+		else if(cola4 != null && cola4 == "rgb(235, 21, 135)"){
+			document.getElementById("mtf.matchRight5").value = document.getElementById("a4").innerHTML;
+		}
+		else if(cola5 != null && cola5 == "rgb(235, 21, 135)"){
+			document.getElementById("mtf.matchRight5").value = document.getElementById("a5").innerHTML;
+		}
+		else if(cola6 != null && cola6 == "rgb(235, 21, 135)"){
+			document.getElementById("mtf.matchRight5").value = document.getElementById("a6").innerHTML;
+		}
+		
+		if(cola1 != null && cola1 == "rgb(186, 252, 53)"){
+			document.getElementById("mtf.matchRight6").value = document.getElementById("a1").innerHTML;
+		}
+		else if(cola2 != null && cola2 == "rgb(186, 252, 53)"){
+			document.getElementById("mtf.matchRight6").value = document.getElementById("a2").innerHTML;
+		}
+		else if(cola3 != null && cola3 == "rgb(186, 252, 53)"){
+			document.getElementById("mtf.matchRight6").value = document.getElementById("a3").innerHTML;
+		}
+		else if(cola4 != null && cola4 == "rgb(186, 252, 53)"){
+			document.getElementById("mtf.matchRight6").value = document.getElementById("a4").innerHTML;
+		}
+		else if(cola5 != null && cola5 == "rgb(186, 252, 53)"){
+			document.getElementById("mtf.matchRight6").value = document.getElementById("a5").innerHTML;
+		}
+		else if(cola6 != null && cola6 == "rgb(186, 252, 53)"){
+			document.getElementById("mtf.matchRight6").value = document.getElementById("a6").innerHTML;
+		}
+	
+	}
+}
+</script>
+
+	
+<script>
+$(function () {
+			$(".addimage").on('click', function (e) {
+				e.preventDefault();
+				$("#addimage").trigger('click');
+			});
+			
+		});
+
+	$('#addimage').change(function () {
+			var file = $('#addimage')[0].files[0].name;
+			$('.queimage').text('Document to upload: '+file);
+			uploadProjectDocs();
+		});
+
+function changeSection(sectionName){
+	//window.location = 'changeSection?sectionName='+sectionName+"&timeCounter="+timeCounter;
+	//localStorage.setItem('timeCounter', timeCounter);
+	var tp = '${currentQuestion.questionMapperInstance.questionMapper.question.type}';
+		if(tp == 'CODING'){
+			confirm(sectionName);
+		}
+		else{
+			window.location = 'changeSection?sectionName='+sectionName+"&timeCounter="+timeCounter;
+			localStorage.setItem('timeCounter', timeCounter);
+		}
+	
+}
+
+function get_center_pos(width, top){
+// top is empty when creating a new notification and is set when recentering
+	if (!top){
+		top = 30;
+		// this part is needed to avoid notification stacking on top of each other
+		$('.ui-pnotify').each(function() { top += $(this).outerHeight() + 20; });
+	}
+
+	return {"top": top, "left": ($(window).width() / 2) - (width / 2)}
+}
+
+function confirm(sectionName) {
+		(new PNotify({
+		title: 'Confirmation Needed',
+		text: 'For a coding Question if you change a section you may loose your changes. Either copy your code somewhere and then change section or use Next/Back to navigate',
+		icon: 'glyphicon glyphicon-question-sign',
+		hide: false,
+		confirm: {
+		confirm: true
+		},
+		buttons: {
+		closer: false,
+		sticker: false
+		},
+		history: {
+		history: false
+		},
+			before_open: function (PNotify) {
+		PNotify.get().css(get_center_pos(PNotify.get().width()));
+		}
+	})).get().on('pnotify.confirm', function() {
+		window.location = 'changeSection?sectionName='+sectionName+"&timeCounter="+timeCounter;
+		localStorage.setItem('timeCounter', timeCounter);
+	}).on('pnotify.cancel', function() {
+		
+	});
+}
+
+function runCode(){
+//editor
+//var editor = ace.edit("editor");
+var code = editor.getValue();
+var input = document.getElementById('input').value;
+var lang = '8';
+var language = '${currentQuestion.questionMapperInstance.questionMapper.question.language.language}';
+	if(language == 'JAVA'){
+		lang = '8';
+	}
+	else if(language == 'C'){
+		lang = '7';
+	}
+	else if(language == 'CPLUSPLUS'){
+		lang = '7';
+	}
+	else if(language == 'CHASH'){
+		lang = '10';
+	}
+	else if(language == 'DotNet'){
+		lang = '10';
+	}
+	else if(language == 'PYTHON'){
+		lang = '0';
+	}
+	else if(language == 'PHP'){
+		lang = '3';
+	}
+	else if(language == 'JAVASCRIPT'){
+		lang = '4';
+	}
+	else if(language == 'CLOJURE'){
+		lang = '2';
+	}
+	else if(language == 'GO'){
+		lang = '6';
+	}
+	else if(language == 'BASH'){
+		lang = '11';
+	}
+	else if(language == 'OBJECTIVE_C'){
+		lang = '12';
+	}
+	else if(language == 'MYSQL'){
+		lang = '13';
+	}
+	else if(language == 'PERL'){
+		lang = '14';
+	}
+	else if(language == 'RUST'){
+		lang = '15';
+	}
+
+var url = 'compile';
+var data = {}; 
+data.language = lang;
+data.code = code;
+data.stdin = input;
+//var json = "{language:"+lang+", code:"+code+", stdin:"+input+"}";
+document.getElementById('output').value = 'Executing your code...';	
+document.getElementById("output").focus();
+document.getElementById("output").scrollIntoView();
+dta = JSON.stringify(data);
+//dta = dta.slice(1,-1);
+//dat = "'"+dta+"'";
+	$.ajax({
+			type : 'POST',
+			url : url,
+			contentType: "application/json; charset=utf-8",
+			data: dta,
+			success : function(data) {
+				
+				document.getElementById('output').value = data;
+				//document.getElementById('output').value = 'eee';
+				console.log("SUCCESS: ", data);
+			},
+			error : function(e) {
+				console.log("ERROR: ", e);
+				
+			}
+		});
+}
+
+function runCodeSystemTestCase(){
+	//var editor = ace.edit("editor");
+var code = editor.getValue();
+var input = "${currentQuestion.questionMapperInstance.questionMapper.question.hiddenInputPositive}";
+document.getElementById('input').value = input;
+var lang = '8';
+var language = '${currentQuestion.questionMapperInstance.questionMapper.question.language.language}';
+	if(language == 'JAVA'){
+		lang = '8';
+	}
+	else if(language == 'C'){
+		lang = '7';
+	}
+	else if(language == 'CPLUSPLUS'){
+		lang = '7';
+	}
+	else if(language == 'CHASH'){
+		lang = '10';
+	}
+	else if(language == 'DotNet'){
+		lang = '10';
+	}
+	else if(language == 'PYTHON'){
+		lang = '0';
+	}
+	else if(language == 'PHP'){
+		lang = '3';
+	}
+	else if(language == 'JAVASCRIPT'){
+		lang = '4';
+	}
+	else if(language == 'CLOJURE'){
+		lang = '2';
+	}
+	else if(language == 'GO'){
+		lang = '6';
+	}
+	else if(language == 'BASH'){
+		lang = '11';
+	}
+	else if(language == 'OBJECTIVE_C'){
+		lang = '12';
+	}
+	else if(language == 'MYSQL'){
+		lang = '13';
+	}
+	else if(language == 'PERL'){
+		lang = '14';
+	}
+	else if(language == 'RUST'){
+		lang = '15';
+	}
+
+var url = 'compileAndRunSystemTest';
+
+var data = {}; 
+data.language = lang;
+data.code = code;
+data.stdin = input;
+document.getElementById('output').value = 'Executing your code...';	
+document.getElementById("output").focus();
+document.getElementById("output").scrollIntoView();
+dta = JSON.stringify(data);
+
+	$.ajax({
+			type : 'POST',
+			url : url,
+			contentType: "application/json; charset=utf-8",
+			data: dta,
+			success : function(data) {
+				console.log("SUCCESS: ", data);
+				//document.getElementById('output').value = data;
+				if(data == "${currentQuestion.questionMapperInstance.questionMapper.question.hiddenOutputPositive}"){
+					document.getElementById('output').value = (data + '\n' +'SUCCESS');
+				}
+				else{
+				document.getElementById('output').value = (data + '\n' +'FAILED');
+				}
+				
+			},
+			error : function(e) {
+				console.log("ERROR: ", e);
+				
+			}
+		});
+}
+
+
+
+
+function prev(){
+var qType = '${currentQuestion.questionMapperInstance.questionMapper.question.type}';
+//var qType = '${currentQuestion.questionMapperInstance.questionMapper.question.type}';
+	if(qType == 'MCQ'){
+		var one = $( 'input[name="one"]:checked' ).val();
+		var two = $( 'input[name="two"]:checked' ).val();
+		var three = $( 'input[name="three"]:checked' ).val();
+		var four = $( 'input[name="four"]:checked' ).val();
+		var five = $( 'input[name="five"]:checked' ).val();
+		var six = $( 'input[name="six"]:checked' ).val();
+		count = 0;
+		if(one != null){
+			count ++;
+		}
+		
+		if(two != null){
+			count ++;
+		}
+		
+		if(three != null){
+			count ++;
+		}
+		
+		if(four != null){
+			count ++;
+		}
+		
+		if(five != null){
+			count ++;
+		}
+		if(six != null){
+			count ++;
+		}
+		
+		var correctNo = ('${currentQuestion.questionMapperInstance.questionMapper.question.rightChoices}'.match(/-/g) || []).length  + 1;
+		
+
+		console.log('${currentQuestion.questionMapperInstance.questionMapper.question.rightChoices}');
+		console.log('correct choices'+correctNo);
+		console.log('no of chosen choices'+count);
+		if(count == correctNo){
+			//notify('INFO', 'go ahead');
+		}
+		else{
+			//do nothing cognizant
+		//notify('INFO', 'No of Answers chosen are not equal to no of correct answers. Please select '+correctNo+' option(s)');
+		//return;
+		}
+		
+		
+	}
+
+if(qType == 'CODING'){
+	var textarea = document.getElementById('codeOfEditor');
+	edt = editor.getSession().getValue();
+	textarea.value = edt;
+}
+
+setMtfValues(qType);
+
+document.testForm.action = "prevQuestion?questionId=${currentQuestion.questionMapperInstance.questionMapper.id}&timeCounter="+timeCounter;
+storeTimeLocal();
+document.testForm.submit();
+}
+
+function submitTest(){
+var qType = '${currentQuestion.questionMapperInstance.questionMapper.question.type}';
+//	var qType = '${currentQuestion.questionMapperInstance.questionMapper.question.type}';
+	if(qType == 'MCQ'){
+		var one = $( 'input[name="one"]:checked' ).val();
+		var two = $( 'input[name="two"]:checked' ).val();
+		var three = $( 'input[name="three"]:checked' ).val();
+		var four = $( 'input[name="four"]:checked' ).val();
+		var five = $( 'input[name="five"]:checked' ).val();
+		var six = $( 'input[name="six"]:checked' ).val();
+		count = 0;
+		if(one != null){
+			count ++;
+		}
+		
+		if(two != null){
+			count ++;
+		}
+		
+		if(three != null){
+			count ++;
+		}
+		
+		if(four != null){
+			count ++;
+		}
+		
+		if(five != null){
+			count ++;
+		}
+		if(six != null){
+			count ++;
+		}
+		
+		var correctNo = ('${currentQuestion.questionMapperInstance.questionMapper.question.rightChoices}'.match(/-/g) || []).length  + 1;
+		
+
+		console.log('${currentQuestion.questionMapperInstance.questionMapper.question.rightChoices}');
+		console.log('correct choices'+correctNo);
+		console.log('no of chosen choices'+count);
+		if(count == correctNo){
+			//notify('INFO', 'go ahead');
+		}
+		else{
+		//notify('INFO', 'No of Answers chosen are not equal to no of correct answers. Please select '+correctNo+' option(s)');
+		//return;
+		}
+		
+		
+	}
+	
+if(qType == 'CODING'){
+	var textarea = document.getElementById('codeOfEditor');
+	edt = editor.getSession().getValue();
+	textarea.value = edt;
+}
+//var textarea = document.getElementById('codeOfEditor');
+//edt = editor.getSession().getValue();
+//textarea.value = edt;
+document.testForm.action = "submitTest?questionId=${currentQuestion.questionMapperInstance.questionMapper.id}&timeCounter="+timeCounter;
+resetTimeLocal();
+//modal.style.display = "block";
+//document.getElementById("showAlert").innerHTML = 'You have exceeded your time limit to complete the test. The test will auto submit in a moment...';
+document.testForm.submit();
+submitTest = 'true';
+notify('Info', 'The test is now submitted! Do not click the Submit button again incase you do not get a result screen fast because of a slow connection. DO NOT REFRESH THE PAGE.');
+//next
+var a = document.getElementById('next');
+a.href = "javascript:donothing();";
+}
+
+function donothing(){
+	notify('Information', 'Your test is already getting submitted. Please Do not click on Submit button again');
+}
+
+function storeTimeLocal(){
+localStorage.setItem('${studentTestForm.firstName}${studentTestForm.lastName}', 'yes');
+localStorage.setItem('testName-${studentTestForm.firstName}${studentTestForm.lastName}', '${studentTestForm.firstName}${studentTestForm.lastName}-'+
+
+'${studentTestForm.testName}');
+localStorage.setItem('timeCounter-${studentTestForm.firstName}${studentTestForm.lastName}', timeCounter);
+}
+
+function resetTimeLocal(){
+localStorage.setItem('${studentTestForm.firstName}${studentTestForm.lastName}', 'no');
+localStorage.setItem('testName-${studentTestForm.firstName}${studentTestForm.lastName}', null);
+localStorage.setItem('timeCounter-${studentTestForm.firstName}${studentTestForm.lastName}', 0);
+}
+
+function submitTestCheckNoAnswer(){
+var uanswered = '${totalQuestions - (noAnswered+1)}';
+	if(uanswered == '0'){
+		notify('Information', 'DO NOT REFRESH the page post submission');
+		submitTest();
+	}
+	else{
+		(new PNotify({
+		title: 'Confirmation Needed',
+		text: 'Are you sure you want to submit the test? You still have unanswered Questions? In the event of you submitting please DO NOT REFESH THE PAGE post submission',
+		icon: 'glyphicon glyphicon-question-sign',
+		hide: false,
+		confirm: {
+		confirm: true
+		},
+		buttons: {
+		closer: true,
+		sticker: true
+		},
+		history: {
+		history: false
+		}
+	})).get().on('pnotify.confirm', function() {
+		// parent.closeFullScreen();	//uncomment it later
+		submitTest();
+	}).on('pnotify.cancel', function() {
+		
+	});
+		
+	}
+	
+}
+
+function confirmWorkspace(qMapperInstanceId){
+	(new PNotify({
+		title: 'Confirmation Needed',
+		text: 'Are you sure you have uploaded the project documentation. Your reviewer may take a dim view of your efforts if no documentation is found? If yes you can submit the workspace?',
+		icon: 'glyphicon glyphicon-question-sign',
+		hide: false,
+		confirm: {
+		confirm: true
+		},
+		buttons: {
+		closer: true,
+		sticker: true
+		},
+		history: {
+		history: false
+		}
+	})).get().on('pnotify.confirm', function() {
+		submitFullStackCode(qMapperInstanceId);
+	}).on('pnotify.cancel', function() {
+		
+	});
+}
+
+function showAndNavigate(){
+	(new PNotify({
+		title: 'About this',
+		text: 'Yes to this will download a Project Documentation template that you are expected to update and then upload. Kindly make sure the How-to use part is crystal clear for your reviewer to gro through and start your app. Do you want to proceed now?',
+		icon: 'glyphicon glyphicon-question-sign',
+		hide: false,
+		confirm: {
+		confirm: true
+		},
+		buttons: {
+		closer: false,
+		sticker: false
+		},
+		history: {
+		history: false
+		}
+	})).get().on('pnotify.confirm', function() {
+		window.open('http://159.65.148.176/file-server/assessment/docs/Project_ReadMe.docx', '_blank');
+	}).on('pnotify.cancel', function() {
+		
+	});
+}
+
+
+function submitFullStackCode(qMapperInstanceId){
+	
+	
+	
+	var url = 'submitFullStackCode?qMapperInstanceId='+qMapperInstanceId;
+
+var data = {}; 
+
+
+	$.ajax({
+			type : 'GET',
+			url : url,
+			contentType: "application/json; charset=utf-8",
+			data: data,
+			success : function(data) {
+				console.log("SUCCESS: ", data);
+				notify('Information', data);
+				
+			},
+			error : function(e) {
+				console.log("ERROR: ", e);
+				
+			}
+		});
+}
+
+function uploadProjectDocs(){
+	qMapperInstanceId = '${currentQuestion.questionMapperInstance.id}';
+		var formData = new FormData();
+		var file = $('#addimage')[0].files[0];
+		console.log('1 file is '+file);
+		if(file != null){
+		formData.append('addimage', file);
+		console.log("form data " + formData);
+		$.ajax({
+			url : 'uploadProjectDocs?qMapperInstanceId='+qMapperInstanceId,
+			enctype: 'multipart/form-data',
+			data : formData,
+			processData : false,
+			contentType : false,
+			type : 'POST',
+			success : function(data) {
+					notify('Information','Your file has been uploaded. Check this link <br\>-<a href="'+data+'" >Click here</a> ');
+			},
+			error : function(err) {
+				notify('Information',err);
+			}
+		});
+		}
+		else{
+			notify('Information', 'Kindly upload the Project Documentations word file');
+		}
+		
+}
+
+</script>
+
+<script>
+
+	function eerrtt(){
+		//$('input[name="one"]').not(':checked').val(0);
+		var qType = '${currentQuestion.questionMapperInstance.questionMapper.question.type}';
+		if(qType == 'MCQ'){
+			var one = $( 'input[name="one"]:checked' ).val();
+			var two = $( 'input[name="two"]:checked' ).val();
+			var three = $( 'input[name="three"]:checked' ).val();
+			var four = $( 'input[name="four"]:checked' ).val();
+			var five = $( 'input[name="five"]:checked' ).val();
+			var six = $( 'input[name="six"]:checked' ).val();
+			count = 0;
+			if(one != null){
+				count ++;
+			}
+			
+			if(two != null){
+				count ++;
+			}
+			
+			if(three != null){
+				count ++;
+			}
+			
+			if(four != null){
+				count ++;
+			}
+			
+			if(five != null){
+				count ++;
+			}
+			if(six != null){
+				count ++;
+			}
+			
+			var noOfConfiguredChoices = '${currentQuestion.questionMapperInstance.questionMapper.question.rightChoices}'.split(',').length;
+			var correctNo = ('${currentQuestion.questionMapperInstance.questionMapper.question.rightChoices}'.match(/-/g) || []).length  + 1;
+			
+
+			//console.log('${currentQuestion.questionMapperInstance.questionMapper.question.rightChoices}');
+			//console.log('correct choices'+correctNo);
+			//console.log('no of chosen choices'+count);
+			if(count == correctNo){
+				//notify('INFO', 'go ahead');
+			}
+			else{
+				//do nothing
+			//notify('INFO', 'No of Answers chosen are not equal to no of correct answers. Please select '+correctNo+' option(s)');
+			//return;
+			}
+			
+			
+		}
+		
+	
+	if(qType == 'CODING'){
+		var textarea = document.getElementById('codeOfEditor');
+		edt = editor.getSession().getValue();
+		textarea.value = edt;
+	}
+	
+	setMtfValues(qType);
+	
+//edt.value = editor.getSession().getValue();
+	var linktext=document.getElementById('next').text;
+		if(linktext == 'Finish Test'){
+		submitTest();
+		}
+		else{
+		document.testForm.action = "nextQuestion?questionId=${currentQuestion.questionMapperInstance.questionMapper.id}&timeCounter="+timeCounter;
+		storeTimeLocal();
+		document.testForm.submit();
+		}
+
+	}
+	
+	
+	
+
+	
+	function notify(messageType, message){
+		var notification = 'Information';
+		//PNotify.prototype.options.styling = "jqueryui";
+			$(function(){
+				new PNotify({
+				title: notification,
+				text: message,
+				type: messageType,
+				width: '60%',
+				hide: false,
+				buttons: {
+						closer: true,
+						sticker: false
+						},
+				history: {
+						history: false
+					}
+			});
+				
+			}); 	
+	}
+
+
+	$(document).ready(function () {
+			//Disable cut copy paste
+			$('body').bind('cut copy paste', function (e) {
+				e.preventDefault();
+			});
+
+			//Disable mouse right click
+			$("body").on("contextmenu",function(e){
+				return false;
+			});
+			
+				function disablePrev() { window.history.forward() }
+				window.onload = disablePrev();
+				window.onpageshow = function(evt) { if (evt.persisted) disableBack() 
+			}
+	});
+</script>
+	<script src="scripts/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    </body>
+</html>

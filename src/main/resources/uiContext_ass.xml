@@ -1,0 +1,25 @@
+<workbook>
+	<worksheet name="CategoryContextCollective">
+		<section startRow="0" endRow="0" />
+		<loop startRow="1" endRow="1" items="result" var="con"
+			varType="com.assessment.data.CategoryContext">
+			<section startRow="1" endRow="1">
+				<mapping row="1" col="0">con.level1</mapping>
+							
+				<mapping row="1" col="1">con.level2</mapping>
+				<mapping row="1" col="2">con.level3</mapping>
+			
+				
+				
+				<mapping row="1" col="3">con.level4</mapping>
+				<mapping row="1" col="4">con.assessmentName</mapping>
+				
+			</section>
+			<loopbreakcondition>
+				<rowcheck offset="0">
+					<cellcheck offset="0">End Rows:</cellcheck>
+				</rowcheck>
+			</loopbreakcondition>
+		</loop>
+	</worksheet>
+</workbook>

@@ -1,0 +1,88 @@
+<samlp:Response
+    xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+    xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" Destination="https://ide.yaksha.online/infosys/yakshaspconsumerendpoint" ID="ID_2c6ee781-1089-4bdc-b9b7-feb56c064a42" InResponseTo="ONELOGIN_328ad3b2-0606-476e-94ed-7210f505ff0f" IssueInstant="2020-07-30T06:46:23.469Z" Version="2.0">
+    <saml:Issuer>https://infosys.onwingspan.com/auth/realms/wingspan-btoc</saml:Issuer>
+    <dsig:Signature
+        xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+        <dsig:SignedInfo>
+            <dsig:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+            <dsig:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+            <dsig:Reference URI="#ID_2c6ee781-1089-4bdc-b9b7-feb56c064a42">
+                <dsig:Transforms>
+                    <dsig:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                    <dsig:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                </dsig:Transforms>
+                <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                <dsig:DigestValue>NHtkW5vzM8dzyu3tcfbe9nSd6wc=</dsig:DigestValue>
+            </dsig:Reference>
+        </dsig:SignedInfo>
+        <dsig:SignatureValue>HepMYJohOJd8TXj41BN/pMjX/GCz7g3nlK73XFmHsFqWXW/kJboG2Wgk7ZUSgiKcjeRY9cn01jM4v3QXHhPmfzuABI2zvF+L1OwYnMQlqn//OSKQ+VHoEibnmh91NpfmPctFYAvoTHOA/nipD4kdtVFm0gROUoK05GjWV9rl+YkVHaJonZqKHA9WVAiUqXf/PeYbeasS5lyftXE1wvRbReLyCFVYtACF50MgJGGX0I4rzs+w/y/ciDxYnvkgVrN0uqe+gU/Q223rrbrRD6PQ2wyEDRPLVpPDIbmQoZz7VlBw/MRyY3ysI55N0p+axSCQuoxZXkHqo8SLQwx/guJjgw==</dsig:SignatureValue>
+        <dsig:KeyInfo>
+            <dsig:KeyName>kaeY448DvpSk4k319EZYsZdVCh0zpINc8OgYl18RqQQ</dsig:KeyName>
+            <dsig:X509Data>
+                <dsig:X509Certificate>MIICqTCCAZECBgFxT/Vr0jANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA13aW5nc3Bhbi1idG9jMB4XDTIwMDQwNjE0NDUxNloXDTMwMDQwNjE0NDY1NlowGDEWMBQGA1UEAwwNd2luZ3NwYW4tYnRvYzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALfGEEs7Gc7FEq4Mf5/WdXnIke0MLiMiLrg0B8C3+cK5EJHp16I9uNrsL6/PIDAupdCLOvi9nXRfqRreb09NWv7bhzIzTEBYn5u9cmQ7cnuxsSdP4M+9VZ6OUMVZ6eAxJ+A2nMdWVHF5dCfxc1HPrn5Z+OPGj4dHkRbsCPsivb3ANYOCBTwUPBIQ6gsMlSGKu/hVSfir+Q8D0vuJ63Fksunut7IDm6E9e/dSMYdMSW4OaAXk9dw4xMIov8EHxVtEOnEzT+zzbELfurMsCR3TrYDPHW33zWLYOfrA/ZatHAl1Q7SyIahd+euxxjESzxl6t1aunxwDG6dfuBBtQiEvSd8CAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAETVxwvMzT2TTXXsMhTRxmH+JdF3sqsOwGnv+q7QVxAvvUGdPowoz3T41AstK9UFFInaZM2qgt6xLX6MK5tyN7l/f89X7uKMdCjjQhb9ZYl/uoVjqMjf2EfewncZLRI2cFEqI9oSqefE/4wmlGGQRMPGb1xk2jJmH2dGhZFfp7bAKnQvKkLegndJZ/x5G6x/7+MHTqL7LyOn5xyOppjP0qXaYY2MRm6FcJkodBQGGS6LZ6EUEb+PV+UQsBvLLW2J+EbcAFW4eh8XJ0nNetaOF245uA8DylqurDFQlk7UjyM1To2avJ2KN+46tUYUOhISmkoYVE0+Cft8632S9vlAZ3g==</dsig:X509Certificate>
+            </dsig:X509Data>
+            <dsig:KeyValue>
+                <dsig:RSAKeyValue>
+                    <dsig:Modulus>t8YQSzsZzsUSrgx/n9Z1eciR7QwuIyIuuDQHwLf5wrkQkenXoj242uwvr88gMC6l0Is6+L2ddF+pGt5vT01a/tuHMjNMQFifm71yZDtye7GxJ0/gz71Vno5QxVnp4DEn4Dacx1ZUcXl0J/FzUc+ufln448aPh0eRFuwI+yK9vcA1g4IFPBQ8EhDqCwyVIYq7+FVJ+Kv5DwPS+4nrcWSy6e63sgOboT1791Ixh0xJbg5oBeT13DjEwii/wQfFW0Q6cTNP7PNsQt+6sywJHdOtgM8dbffNYtg5+sD9lq0cCXVDtLIhqF3567HGMRLPGXq3Vq6fHAMbp1+4EG1CIS9J3w==</dsig:Modulus>
+                    <dsig:Exponent>AQAB</dsig:Exponent>
+                </dsig:RSAKeyValue>
+            </dsig:KeyValue>
+        </dsig:KeyInfo>
+    </dsig:Signature>
+    <samlp:Status>
+        <samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/>
+    </samlp:Status>
+    <saml:Assertion
+        xmlns="urn:oasis:names:tc:SAML:2.0:assertion" ID="ID_657b1eaa-a3d4-4473-90a8-6e61208d4d9e" IssueInstant="2020-07-30T06:46:23.468Z" Version="2.0">
+        <saml:Issuer>https://infosys.onwingspan.com/auth/realms/wingspan-btoc</saml:Issuer>
+        <saml:Subject>
+            <saml:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified">5d44b5dd-80e8-41e1-adf1-94ea230cbce2</saml:NameID>
+            <saml:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+                <saml:SubjectConfirmationData InResponseTo="ONELOGIN_328ad3b2-0606-476e-94ed-7210f505ff0f" NotOnOrAfter="2020-08-06T06:46:21.468Z" Recipient="https://ide.yaksha.online/infosys/yakshaspconsumerendpoint"/>
+            </saml:SubjectConfirmation>
+        </saml:Subject>
+        <saml:Conditions NotBefore="2020-07-30T06:46:21.468Z" NotOnOrAfter="2020-07-30T06:48:21.468Z">
+            <saml:AudienceRestriction>
+                <saml:Audience>https://ide.yaksha.online/infosys/metadata</saml:Audience>
+            </saml:AudienceRestriction>
+        </saml:Conditions>
+        <saml:AuthnStatement AuthnInstant="2020-07-30T06:46:23.469Z" SessionIndex="4630dd73-ae9b-48b2-90f4-a62c0a1c5695::6806ba7e-a2c2-4f97-86be-def2c08b0303">
+            <saml:AuthnContext>
+                <saml:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified</saml:AuthnContextClassRef>
+            </saml:AuthnContext>
+        </saml:AuthnStatement>
+        <saml:AttributeStatement>
+            <saml:Attribute FriendlyName="lastName" Name="lastName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+                <saml:AttributeValue
+                    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">User
+                </saml:AttributeValue>
+            </saml:Attribute>
+            <saml:Attribute FriendlyName="email" Name="email" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+                <saml:AttributeValue
+                    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">iiht_user@demo.com
+                </saml:AttributeValue>
+            </saml:Attribute>
+            <saml:Attribute FriendlyName="firstName" Name="firstName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+                <saml:AttributeValue
+                    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">IIHT
+                </saml:AttributeValue>
+            </saml:Attribute>
+            <saml:Attribute Name="Role" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+                <saml:AttributeValue
+                    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">read-token
+                </saml:AttributeValue>
+            </saml:Attribute>
+            <saml:Attribute Name="Role" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+                <saml:AttributeValue
+                    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xs:string">uma_authorization
+                </saml:AttributeValue>
+            </saml:Attribute>
+        </saml:AttributeStatement>
+    </saml:Assertion>
+</samlp:Response>

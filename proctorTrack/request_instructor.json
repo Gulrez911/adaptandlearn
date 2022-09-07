@@ -1,0 +1,23 @@
+{
+"user": {
+"first_name": "IIHT", "last_name": "Instructor",
+"user_id": "instructor@iiht.com",
+"email": "instructor@iiht.com",
+"role" : "instructor",
+"lang_code": "en"
+},
+"assignment_data": {
+"id": "1463903",
+"is_proctored": true,
+"start": "2020-06-25T00:00",
+"end": "2022-06-29T00:00",
+"is_onboarding": true,
+"group_id": "1463903",
+"access_code": "na",
+"name": "ElasticSearch",
+"test_url": "https://ide.yaksha.online/assessment/startTestSession?userId=am9obi5kb2VAc21pdGguY29t&companyId=IH&testId=1463903&sharedDirect=yes&startDate=MTU5MzAyMzQwMDAwMA%3D%3D&endDate=MTY0MDk3NTQwMDAwMA%3D%3D",
+"duration": "60",
+"is_active": true,
+"attempts_allowed": 2
+}
+}

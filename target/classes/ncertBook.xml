@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<workbook>
+	<worksheet name="ncertsolutions.guru">
+		<section startRow="0" endRow="0" />
+		<loop startRow="1" endRow="1" items="result" var="ass"
+			varType="com.assessment.data.NcertBook">
+			<section startRow="1" endRow="1">
+				<mapping row="1" col="0">ass.mainCategory</mapping>
+				<mapping row="1" col="1">ass.masterCategory</mapping>
+				<mapping row="1" col="2">ass.branchLevel</mapping>
+				<mapping row="1" col="3">ass.subjectLevel</mapping>
+				<mapping row="1" col="4">ass.topicLevel</mapping>
+				<mapping row="1" col="5">ass.link</mapping>
+			</section>
+			<loopbreakcondition>
+				<rowcheck offset="0">
+					<cellcheck offset="0">End Rows:</cellcheck>
+				</rowcheck>
+			</loopbreakcondition>
+		</loop>
+	</worksheet>
+	<worksheet name="ncertbooks.guru">
+		<section startRow="0" endRow="0" />
+		<loop startRow="1" endRow="1" items="result" var="ass"
+			varType="com.assessment.data.NcertBook">
+			<section startRow="1" endRow="1">
+				<mapping row="1" col="0">ass.mainCategory</mapping>
+				<mapping row="1" col="1">ass.masterCategory</mapping>
+				<mapping row="1" col="2">ass.branchLevel</mapping>
+				<mapping row="1" col="3">ass.subjectLevel</mapping>
+				<mapping row="1" col="4">ass.topicLevel</mapping>
+				<mapping row="1" col="5">ass.link</mapping>
+			</section>
+			<loopbreakcondition>
+				<rowcheck offset="0">
+					<cellcheck offset="0">End Rows:</cellcheck>
+				</rowcheck>
+			</loopbreakcondition>
+		</loop>
+	</worksheet>
+	<worksheet name="learncram.com">
+		<section startRow="0" endRow="0" />
+		<loop startRow="1" endRow="1" items="result" var="ass"
+			varType="com.assessment.data.NcertBook">
+			<section startRow="1" endRow="1">
+				<mapping row="1" col="0">ass.mainCategory</mapping>
+				<mapping row="1" col="1">ass.masterCategory</mapping>
+				<mapping row="1" col="2">ass.branchLevel</mapping>
+				<mapping row="1" col="3">ass.subjectLevel</mapping>
+				<mapping row="1" col="4">ass.topicLevel</mapping>
+				<mapping row="1" col="5">ass.link</mapping>
+			</section>
+			<loopbreakcondition>
+				<rowcheck offset="0">
+					<cellcheck offset="0">End Rows:</cellcheck>
+				</rowcheck>
+			</loopbreakcondition>
+		</loop>
+	</worksheet>
+	<worksheet name="learninsta.com">
+		<section startRow="0" endRow="0" />
+		<loop startRow="1" endRow="1" items="result" var="ass"
+			varType="com.assessment.data.NcertBook">
+			<section startRow="1" endRow="1">
+				<mapping row="1" col="0">ass.mainCategory</mapping>
+				<mapping row="1" col="1">ass.masterCategory</mapping>
+				<mapping row="1" col="2">ass.branchLevel</mapping>
+				<mapping row="1" col="3">ass.subjectLevel</mapping>
+				<mapping row="1" col="4">ass.topicLevel</mapping>
+				<mapping row="1" col="5">ass.link</mapping>
+			</section>
+			<loopbreakcondition>
+				<rowcheck offset="0">
+					<cellcheck offset="0">End Rows:</cellcheck>
+				</rowcheck>
+			</loopbreakcondition>
+		</loop>
+	</worksheet>
+</workbook>
